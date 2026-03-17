@@ -1,0 +1,14 @@
+<!-- public/og-image.svg -->
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="black"/>
+  <rect x="60" y="60" width="1080" height="510" rx="32" stroke="white" stroke-opacity="0.14"/>
+  <text x="100" y="260" fill="white" font-family="Inter, Arial, sans-serif" font-size="86" font-weight="600">
+    Tether
+  </text>
+  <text x="100" y="340" fill="white" fill-opacity="0.65" font-family="Inter, Arial, sans-serif" font-size="34">
+    Connect without limits.
+  </text>
+  <text x="100" y="390" fill="white" fill-opacity="0.45" font-family="Inter, Arial, sans-serif" font-size="28">
+    No numbers. Just usernames.
+  </text>
+</svg>
