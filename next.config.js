@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  output: "export",
-  images: {
-    unoptimized: true
-  },
-  basePath: "/Tether.web",
-  assetPrefix: "/Tether.web/"
+  output: "export",            // make it a static site
+  images: { unoptimized: true }, // allow images
+  basePath: "/Tether.web",     // your repo name
+  assetPrefix: "/Tether.web/", // fix paths
 };
 
 module.exports = nextConfig;
