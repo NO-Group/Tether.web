@@ -1,49 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Privacy Policy - Tether</title>
-<style>
-body { font-family:Arial; background:#0b0f1a; color:#fff; padding:40px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Privacy Policy — Tether</title>
+  <meta name="description" content="Read Tether's Privacy Policy. Learn how we protect your data, what we collect (almost nothing), and how our zero-knowledge architecture keeps your communications private.">
+  <meta name="theme-color" content="#0A0F1C">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Privacy Policy — Tether">
+  <meta property="og:description" content="How Tether protects your privacy with zero-knowledge architecture and end-to-end encryption.">
+  <meta property="og:image" content="assets/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary:'#00E5FF', secondary:'#00B8D9', bg:'#0A0F1C', surface:'#121A2E', 'surface-light':'#1A2540', muted:'#94A3C3' },
+          fontFamily: { heading:['Space Grotesk','sans-serif'], body:['Inter','sans-serif'] },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .legal-toc {
+      background: rgba(18,26,46,0.4);
+      border: 1px solid rgba(0,229,255,0.06);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+    .legal-toc h3 {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legal-toc h3 i {
+      color: var(--color-primary);
+      font-size: 14px;
+    }
+    .legal-toc ol {
+      list-style: none;
+      counter-reset: toc;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 600px) {
+      .legal-toc ol { grid-template-columns: 1fr; }
+    }
+    .legal-toc li {
+      counter-increment: toc;
+    }
+    .legal-toc a {
+      font-size: 14px;
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+    }
+    .legal-toc a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+      opacity: 0.5;
+      width: 24px;
+      flex-shrink: 0;
+    }
+    .legal-toc a:hover {
+      color: var(--color-primary);
+      padding-left: 4px;
+    }
+
+    .privacy-highlight {
+      background: rgba(0,229,255,0.04);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .privacy-highlight p {
+      margin-bottom: 0 !important;
+      color: var(--color-text) !important;
+      font-weight: 500;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,229,255,0.08);
+      margin: 20px 0 28px;
+    }
+    .data-table th {
+      background: rgba(0,229,255,0.06);
+      padding: 14px 18px;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-primary);
+      border-bottom: 1px solid rgba(0,229,255,0.08);
+    }
+    .data-table td {
+      padding: 12px 18px;
+      font-size: 14px;
+      color: var(--color-muted);
+      border-bottom: 1px solid rgba(0,229,255,0.04);
+      line-height: 1.6;
+    }
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+    .data-table .yes {
+      color: #2ECC71;
+      font-weight: 600;
+    }
+    .data-table .no {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .legal-nav {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 60px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(0,229,255,0.06);
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
 <body>
 
-<h1>Privacy Policy</h1>
+  <!-- Loader -->
+  <div class="loader-overlay" aria-hidden="true">
+    <img src="assets/logo.svg" alt="" class="loader-logo" width="80" height="80">
+    <div class="loader-bar-container"><div class="loader-bar"></div></div>
+    <span class="loader-text">Loading</span>
+  </div>
 
-<p>Effective Date: 2026</p>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#00E5FF,#00B8D9);z-index:99999;transition:width 0.1s linear;box-shadow:0 0 8px rgba(0,229,255,0.5);"></div>
 
-<p>
-Tether respects your privacy and is committed to protecting your personal information.
-</p>
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo" aria-label="Tether Home">
+        <img src="assets/logo.svg" alt="Tether Logo" width="36" height="36">
+        <span class="nav-logo-text">Tether</span>
+      </a>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="features.html" role="menuitem">Features</a></li>
+        <li role="none"><a href="screenshots.html" role="menuitem">Screenshots</a></li>
+        <li role="none"><a href="news.html" role="menuitem">News</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About</a></li>
+        <li role="none"><a href="faq.html" role="menuitem">FAQ</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="index.html#download" class="btn btn-primary btn-sm"><i class="fas fa-download btn-icon"></i> Download</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-<h3>Information We Collect</h3>
-<ul>
-<li>Basic account information (email, username)</li>
-<li>Usage data to improve services</li>
-</ul>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-menu-glow"></div>
+    <a href="index.html">Home</a><a href="features.html">Features</a><a href="screenshots.html">Screenshots</a>
+    <a href="news.html">News</a><a href="about.html">About</a><a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
+    <div style="margin-top:16px;"><a href="index.html#download" class="btn btn-primary"><i class="fas fa-download"></i> Download App</a></div>
+  </div>
 
-<h3>How We Use Information</h3>
-<ul>
-<li>To provide and maintain the service</li>
-<li>To improve user experience</li>
-<li>To communicate updates and support</li>
-</ul>
+  <!-- Main -->
+  <main id="main-content">
 
-<h3>Data Protection</h3>
-<p>
-We implement reasonable security measures to protect your data.
-</p>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero-glow" aria-hidden="true"></div>
+      <div class="section-badge"><span class="section-badge-dot"></span> Legal</div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,56px);margin-top:16px;">
+        Privacy <span class="gradient-text">Policy</span>
+      </h1>
+      <p class="section-subtitle" style="max-width:640px;margin:16px auto 0;">
+        Your privacy is not just a feature — it's the foundation of everything we build. This policy explains exactly what we do and don't do with your data.
+      </p>
+    </section>
 
-<h3>Third Parties</h3>
-<p>
-We do not sell your personal data. Third-party services may be used for payment and analytics.
-</p>
+    <!-- Privacy Content -->
+    <section class="section" style="padding-top:20px;">
+      <div class="section-container">
+        <div class="legal-content reveal">
 
-<h3>Contact</h3>
-<p>Email: n.ogroup@yahoo.com</p>
+          <p class="legal-updated">
+            <i class="fas fa-calendar" style="margin-right:6px;color:var(--color-primary);"></i>
+            Last Updated: January 1, 2026 &nbsp;|&nbsp; Effective Date: January 1, 2026
+          </p>
 
-<a href="index.html">← Back to Home</a>
+          <!-- Privacy Summary Box -->
+          <div class="privacy-highlight">
+            <p><strong><i class="fas fa-shield-halved" style="margin-right:8px;color:var(--color-primary);"></i> The Short Version:</strong> We collect almost nothing. We can't read your messages. We don't sell data. We don't show ads. We don't track you. Your conversations are encrypted end-to-end and belong entirely to you.</p>
+          </div>
+
+          <!-- Table of Contents -->
+          <div class="legal-toc">
+            <h3><i class="fas fa-list"></i> Table of Contents</h3>
+            <ol>
+              <li><a href="#pp-1">Introduction</a></li>
+              <li><a href="#pp-2">Information We Collect</a></li>
+              <li><a href="#pp-3">Information We Do NOT Collect</a></li>
+              <li><a href="#pp-4">How We Use Your Information</a></li>
+              <li><a href="#pp-5">End-to-End Encryption</a></li>
+              <li><a href="#pp-6">Data Storage & Security</a></li>
+              <li><a href="#pp-7">Data Retention</a></li>
+              <li><a href="#pp-8">Data Sharing & Third Parties</a></li>
+              <li><a href="#pp-9">Cookies & Tracking</a></li>
+              <li><a href="#pp-10">Your Rights & Choices</a></li>
+              <li><a href="#pp-11">Children's Privacy</a></li>
+              <li><a href="#pp-12">International Data Transfers</a></li>
+              <li><a href="#pp-13">Law Enforcement Requests</a></li>
+              <li><a href="#pp-14">Changes to This Policy</a></li>
+              <li><a href="#pp-15">Contact Information</a></li>
+            </ol>
+          </div>
+
+          <!-- Section 1 -->
+          <h2 id="pp-1">1. Introduction</h2>
+          <p>This Privacy Policy ("Policy") describes how Tether ("Tether," "we," "us," or "our") collects, uses, stores, and protects information when you use the Tether messaging application, website, and all related services (collectively, the "Service").</p>
+          <p>Tether is built on a <strong>zero-knowledge architecture</strong>. This means our systems are designed from the ground up so that we cannot access, read, or decrypt your messages, calls, or shared media. Privacy is not an afterthought — it is the fundamental design principle upon which our entire platform is constructed.</p>
+          <p>By using the Service, you agree to the collection and use of information in accordance with this Policy. This Policy should be read alongside our <a href="terms.html">Terms of Service</a>.</p>
+
+          <!-- Section 2 -->
+          <h2 id="pp-2">2. Information We Collect</h2>
+          <p>We are committed to collecting the absolute minimum amount of information necessary to provide the Service. Here is a complete and exhaustive list of data we collect:</p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>What We Store</th>
+                <th>Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tether ID</strong></td>
+                <td>Your chosen username</td>
+                <td>Account identification &amp; user discovery</td>
+              </tr>
+              <tr>
+                <td><strong>Password Hash</strong></td>
+                <td>Argon2id hash of your password</td>
+                <td>Authentication (we never store plaintext passwords)</td>
+              </tr>
+              <tr>
+                <td><strong>Account Creation Date</strong></td>
+                <td>Timestamp of registration</td>
+                <td>Account management</td>
+              </tr>
+              <tr>
+                <td><strong>Public Keys</strong></td>
+                <td>Your public encryption keys</td>
+                <td>Enable end-to-end encryption with other users</td>
+              </tr>
+              <tr>
+                <td><strong>Encrypted Messages (in transit)</strong></td>
+                <td>Encrypted blobs temporarily queued for delivery</td>
+                <td>Message delivery when recipient is offline</td>
+              </tr>
+              <tr>
+                <td><strong>Push Tokens</strong></td>
+                <td>Device push notification tokens</td>
+                <td>Deliver notifications (can be disabled)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>2.1 Voluntarily Provided Information</h3>
+          <p>You may optionally provide additional information such as a profile photo, display name, or status message. This information is <strong>end-to-end encrypted</strong> and stored on our servers only as encrypted data that we cannot access or view.</p>
+
+          <h3>2.2 Automatically Collected Information</h3>
+          <p>We do <strong>not</strong> automatically collect any of the following:</p>
+          <ul>
+            <li>IP addresses (connections are routed through our relay network)</li>
+            <li>Device identifiers or fingerprints</li>
+            <li>Usage analytics or behavioral data</li>
+            <li>Location data</li>
+            <li>App usage patterns</li>
+          </ul>
+
+          <!-- Section 3 -->
+          <h2 id="pp-3">3. Information We Do NOT Collect</h2>
+          <p>Transparency requires us to be explicit about what we do <strong>not</strong> collect. The following data is never collected, stored, processed, or accessed by Tether:</p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>Collected?</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Real name</td>
+                <td class="no">Never</td>
+                <td>Not required for registration</td>
+              </tr>
+              <tr>
+                <td>Phone number</td>
+                <td class="no">Never</td>
+                <td>Not required for registration</td>
+              </tr>
+              <tr>
+                <td>Email address</td>
+                <td class="no">Never</td>
+                <td>Not required for registration</td>
+              </tr>
+              <tr>
+                <td>Contact list / address book</td>
+                <td class="no">Never</td>
+                <td>We never access your device contacts</td>
+              </tr>
+              <tr>
+                <td>Message content</td>
+                <td class="no">Never</td>
+                <td>End-to-end encrypted; we cannot decrypt</td>
+              </tr>
+              <tr>
+                <td>Call content</td>
+                <td class="no">Never</td>
+                <td>Voice/video calls are end-to-end encrypted</td>
+              </tr>
+              <tr>
+                <td>Who you communicate with</td>
+                <td class="no">Never</td>
+                <td>Social graph is never stored or analyzed</td>
+              </tr>
+              <tr>
+                <td>Location / GPS data</td>
+                <td class="no">Never</td>
+                <td>No location tracking of any kind</td>
+              </tr>
+              <tr>
+                <td>IP address</td>
+                <td class="no">Never</td>
+                <td>Connections routed through relays</td>
+              </tr>
+              <tr>
+                <td>Device fingerprint</td>
+                <td class="no">Never</td>
+                <td>No device identification techniques used</td>
+              </tr>
+              <tr>
+                <td>Usage analytics</td>
+                <td class="no">Never</td>
+                <td>No behavioral tracking or analytics SDKs</td>
+              </tr>
+              <tr>
+                <td>Advertising identifiers</td>
+                <td class="no">Never</td>
+                <td>No ads, no ad tracking, no ad SDKs</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="privacy-highlight">
+            <p><i class="fas fa-lock" style="margin-right:8px;color:var(--color-primary);"></i> <strong>In plain English:</strong> We don't know who you are. We don't know who you talk to. We can't read what you say. We can't listen to your calls. We don't know where you are. We don't track what you do. Period.</p>
+          </div>
+
+          <!-- Section 4 -->
+          <h2 id="pp-4">4. How We Use Your Information</h2>
+          <p>The minimal information we do collect is used exclusively for the following purposes:</p>
+          <ul>
+            <li><strong>Account Authentication:</strong> To verify your identity when you log in using your Tether ID and password hash.</li>
+            <li><strong>Message Delivery:</strong> To temporarily queue encrypted message blobs for delivery to offline recipients. Messages are deleted from our servers immediately upon successful delivery.</li>
+            <li><strong>Key Exchange:</strong> To facilitate the exchange of public encryption keys between users, enabling end-to-end encryption.</li>
+            <li><strong>Push Notifications:</strong> To deliver notification alerts to your device when new messages arrive. Push notification content is generic (e.g., "New message") and never contains message content. This can be disabled entirely in settings.</li>
+            <li><strong>Service Improvement:</strong> Aggregated, anonymized, non-identifiable metrics (such as total global message count) may be used to plan infrastructure capacity. These metrics cannot be traced to any individual user.</li>
+          </ul>
+          <p>We <strong>never</strong> use your information for advertising, marketing, profiling, behavioral analysis, or sale to third parties.</p>
+
+          <!-- Section 5 -->
+          <h2 id="pp-5">5. End-to-End Encryption</h2>
+          <p>All communications on Tether are protected by end-to-end encryption (E2EE). This section explains how our encryption works and what it means for your privacy.</p>
+
+          <h3>5.1 How It Works</h3>
+          <p>Tether uses a custom implementation of the Signal Protocol, which includes:</p>
+          <ul>
+            <li><strong>X3DH (Extended Triple Diffie-Hellman):</strong> A key agreement protocol that establishes shared secret keys between users without Tether ever possessing those keys.</li>
+            <li><strong>Double Ratchet Algorithm:</strong> Provides forward secrecy and future secrecy by deriving a unique encryption key for every single message.</li>
+            <li><strong>AES-256-GCM:</strong> Military-grade symmetric encryption used to encrypt individual messages, providing both confidentiality and integrity.</li>
+            <li><strong>Curve25519:</strong> Elliptic curve cryptography used for key exchange operations.</li>
+            <li><strong>HMAC-SHA256:</strong> Used for message authentication to prevent tampering.</li>
+          </ul>
+
+          <h3>5.2 What This Means</h3>
+          <ul>
+            <li>Messages are encrypted <strong>before</strong> they leave your device and decrypted <strong>only</strong> on the recipient's device.</li>
+            <li>Tether's servers never possess the keys needed to decrypt your content.</li>
+            <li>Even if our servers were compromised, attackers would only obtain encrypted data that is computationally infeasible to decrypt.</li>
+            <li>Each message uses a <strong>unique encryption key</strong>. Compromising one key does not affect any other message — past or future.</li>
+          </ul>
+
+          <h3>5.3 What E2EE Does Not Protect Against</h3>
+          <p>For complete transparency, end-to-end encryption does not protect against:</p>
+          <ul>
+            <li>A recipient voluntarily sharing, forwarding, or screenshot-capturing received messages (though Tether offers screenshot protection features).</li>
+            <li>Malware or keyloggers installed on your device that capture data before encryption or after decryption.</li>
+            <li>Physical access to an unlocked device by an unauthorized person.</li>
+            <li>Weak or compromised account passwords.</li>
+          </ul>
+
+          <!-- Section 6 -->
+          <h2 id="pp-6">6. Data Storage & Security</h2>
+          <h3>6.1 Server Infrastructure</h3>
+          <p>Tether operates a global network of servers located in privacy-respecting jurisdictions. All servers are:</p>
+          <ul>
+            <li>Protected by full-disk encryption (AES-256) at rest.</li>
+            <li>Connected via TLS 1.3 with certificate pinning for all data in transit.</li>
+            <li>Hosted in SOC 2 Type II certified data centers with 24/7 physical security.</li>
+            <li>Subject to strict access controls — only essential engineering personnel have server access, and all access is logged and audited.</li>
+          </ul>
+
+          <h3>6.2 On-Device Security</h3>
+          <p>On your device, Tether stores your encryption keys and message history in an encrypted local database. This database is:</p>
+          <ul>
+            <li>Encrypted using your device's hardware-backed keystore (Keychain on iOS, Android Keystore on Android).</li>
+            <li>Accessible only to the Tether application.</li>
+            <li>Protected by your device's lock screen authentication (PIN, fingerprint, Face ID).</li>
+          </ul>
+
+          <h3>6.3 Incident Response</h3>
+          <p>In the unlikely event of a security breach, Tether maintains a documented incident response plan that includes:</p>
+          <ul>
+            <li>Immediate containment and investigation.</li>
+            <li>Notification to affected users within 72 hours.</li>
+            <li>Coordination with relevant authorities as required by law.</li>
+            <li>Public transparency report detailing the incident and remediation steps.</li>
+          </ul>
+
+          <!-- Section 7 -->
+          <h2 id="pp-7">7. Data Retention</h2>
+          <p>Tether follows a strict minimal-retention policy:</p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>Retention Period</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Account information (Tether ID, password hash)</td>
+                <td>Until you delete your account</td>
+              </tr>
+              <tr>
+                <td>Encrypted messages in transit</td>
+                <td>Deleted immediately upon delivery (max 30 days for undeliverable messages)</td>
+              </tr>
+              <tr>
+                <td>Public encryption keys</td>
+                <td>Until you delete your account</td>
+              </tr>
+              <tr>
+                <td>Push notification tokens</td>
+                <td>Until you disable notifications or delete your account</td>
+              </tr>
+              <tr>
+                <td>Encrypted cloud storage (media/files)</td>
+                <td>Until you delete the content or your account</td>
+              </tr>
+              <tr>
+                <td>Support correspondence</td>
+                <td>90 days after resolution, then permanently deleted</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>When you delete your account, <strong>all associated data is permanently erased within 24 hours</strong>. This process is irreversible. We do not maintain backups of deleted account data.</p>
+
+          <!-- Section 8 -->
+          <h2 id="pp-8">8. Data Sharing & Third Parties</h2>
+
+          <div class="privacy-highlight">
+            <p><i class="fas fa-ban" style="margin-right:8px;color:var(--color-primary);"></i> <strong>We do not sell, rent, lease, trade, or otherwise share your personal data with any third party for advertising, marketing, analytics, or any other commercial purpose. Ever.</strong></p>
+          </div>
+
+          <h3>8.1 Third-Party Services We Use</h3>
+          <p>Tether uses a minimal number of third-party services, each carefully vetted for privacy compliance:</p>
+          <ul>
+            <li><strong>Push Notification Services:</strong> Apple Push Notification Service (APNs) and Google Firebase Cloud Messaging (FCM) are used solely to deliver notification alerts. Push payloads contain no message content — only a generic signal that a new message is available.</li>
+            <li><strong>Content Delivery Network (CDN):</strong> A CDN is used to deliver app updates and static assets. CDN logs are disabled, and no user-identifiable data passes through the CDN.</li>
+          </ul>
+
+          <h3>8.2 No Analytics SDKs</h3>
+          <p>Tether does not integrate any third-party analytics, crash reporting, or tracking SDKs. We do not use Google Analytics, Firebase Analytics, Facebook SDK, Amplitude, Mixpanel, or any similar tools. Your usage of Tether is not tracked, measured, or reported to any external party.</p>
+
+          <h3>8.3 No Advertising</h3>
+          <p>Tether does not display advertisements. We do not integrate any advertising SDKs or networks. We do not create advertising profiles. We do not participate in any advertising ecosystem.</p>
+
+          <!-- Section 9 -->
+          <h2 id="pp-9">9. Cookies & Tracking</h2>
+
+          <h3>9.1 Website</h3>
+          <p>The Tether website (tether.app) does not use cookies, web beacons, pixel tags, or any other tracking technologies. We do not use Google Analytics or any third-party analytics service on our website.</p>
+
+          <h3>9.2 Application</h3>
+          <p>The Tether application does not use any tracking technologies. We do not collect device identifiers, advertising identifiers (IDFA/GAID), browser fingerprints, or any similar identifiers.</p>
+
+          <h3>9.3 Do Not Track</h3>
+          <p>We honor Do Not Track (DNT) signals. However, since we do not track users in any way, the DNT signal is effectively redundant for Tether users. You are never tracked regardless of your DNT setting.</p>
+
+          <!-- Section 10 -->
+          <h2 id="pp-10">10. Your Rights & Choices</h2>
+          <p>Regardless of your location, Tether provides all users with the following rights:</p>
+
+          <h3>10.1 Right to Access</h3>
+          <p>You may request a copy of all data Tether stores about you. Due to our minimal data collection, this will consist only of your Tether ID, account creation date, and public keys. We can provide this data within 30 days of your request.</p>
+
+          <h3>10.2 Right to Deletion</h3>
+          <p>You may delete your account and all associated data at any time through Settings → Account → Delete Account. Deletion is completed within 24 hours and is irreversible.</p>
+
+          <h3>10.3 Right to Portability</h3>
+          <p>You may export your message history from within the application. Exported data is provided in an encrypted format that only you can decrypt. We will provide your account metadata in a standard machine-readable format upon request.</p>
+
+          <h3>10.4 Right to Rectification</h3>
+          <p>You may update your Tether ID, profile information, and password at any time through the application settings.</p>
+
+          <h3>10.5 Right to Restrict Processing</h3>
+          <p>Given our minimal data processing, this right is inherently fulfilled. We process your data solely for Service delivery. You may further restrict processing by disabling push notifications or enabling airplane mode.</p>
+
+          <h3>10.6 Right to Object</h3>
+          <p>You may object to any processing of your data by contacting us. Given our minimal processing, the most effective way to exercise this right is to delete your account.</p>
+
+          <h3>10.7 GDPR Compliance</h3>
+          <p>If you are located in the European Economic Area (EEA), United Kingdom, or Switzerland, you have additional rights under the General Data Protection Regulation (GDPR). Tether complies with GDPR requirements, including lawful basis for processing, data minimization, and user rights. Our lawful basis for processing is <strong>legitimate interest</strong> (providing the messaging service you signed up for).</p>
+
+          <h3>10.8 CCPA Compliance</h3>
+          <p>If you are a California resident, you have rights under the California Consumer Privacy Act (CCPA). Tether does not sell personal information. We do not share personal information for cross-context behavioral advertising. You may exercise your CCPA rights by contacting us.</p>
+
+          <!-- Section 11 -->
+          <h2 id="pp-11">11. Children's Privacy</h2>
+          <p>Tether does not knowingly collect personal information from children under the age of 13 (or the applicable age of consent in your jurisdiction). If we become aware that we have collected personal information from a child under the applicable minimum age, we will take immediate steps to delete that information.</p>
+          <p>If you are a parent or guardian and believe your child has provided personal information to Tether, please contact us at <a href="mailto:n.ogroup@yahoo.com">n.ogroup@yahoo.com</a> and we will promptly investigate and take appropriate action.</p>
+
+          <!-- Section 12 -->
+          <h2 id="pp-12">12. International Data Transfers</h2>
+          <p>Tether operates servers in multiple countries to provide fast, reliable service worldwide. When your encrypted data is transmitted to or stored on servers in different jurisdictions:</p>
+          <ul>
+            <li>All data in transit is protected by TLS 1.3 encryption.</li>
+            <li>All data at rest is protected by AES-256 full-disk encryption.</li>
+            <li>All message content remains end-to-end encrypted — no server in any jurisdiction can decrypt your messages.</li>
+            <li>We select server locations in jurisdictions with strong privacy laws wherever possible.</li>
+          </ul>
+          <p>For users in the EEA, UK, or Switzerland, any transfer of data outside these regions is conducted using appropriate safeguards, including Standard Contractual Clauses (SCCs) approved by the European Commission.</p>
+
+          <!-- Section 13 -->
+          <h2 id="pp-13">13. Law Enforcement Requests</h2>
+          <p>Tether is committed to transparency regarding law enforcement requests. Our position is clear:</p>
+
+          <div class="privacy-highlight">
+            <p><i class="fas fa-gavel" style="margin-right:8px;color:var(--color-primary);"></i> <strong>We cannot provide what we do not have.</strong> Due to end-to-end encryption and our zero-knowledge architecture, we are technically unable to provide message content, call content, contact lists, or communication metadata in response to any request — legal or otherwise.</p>
+          </div>
+
+          <h3>13.1 What We Can Provide</h3>
+          <p>If compelled by a valid legal order (court order, subpoena, or equivalent), the maximum we can provide is:</p>
+          <ul>
+            <li>Whether a Tether ID is registered (yes/no).</li>
+            <li>The date the account was created.</li>
+            <li>The date the account last connected to the service.</li>
+          </ul>
+          <p>That's it. We cannot provide message content, message metadata, contact lists, group memberships, call records, IP addresses, or any other user data — because we don't have it.</p>
+
+          <h3>13.2 Transparency Reports</h3>
+          <p>Tether publishes semi-annual transparency reports detailing the number and nature of law enforcement requests received and how we responded. These reports are available on our website.</p>
+
+          <h3>13.3 Warrant Canary</h3>
+          <p>Tether maintains a warrant canary on our website. This canary is updated quarterly to confirm that we have not received any secret government requests (such as National Security Letters or FISA orders) that we would be prohibited from disclosing.</p>
+
+          <!-- Section 14 -->
+          <h2 id="pp-14">14. Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make material changes:</p>
+          <ul>
+            <li>We will provide prominent notice within the Tether application at least <strong>30 days</strong> before the changes take effect.</li>
+            <li>We will update the "Last Updated" date at the top of this Policy.</li>
+            <li>For significant changes, we may also notify you via in-app notification.</li>
+          </ul>
+          <p>Your continued use of the Service after the effective date of any changes constitutes your acceptance of the updated Policy. If you disagree with any changes, you should stop using the Service and delete your account.</p>
+          <p>Previous versions of this Policy are archived and available upon request.</p>
+
+          <!-- Section 15 -->
+          <h2 id="pp-15">15. Contact Information</h2>
+          <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+          <ul>
+            <li><strong>Email (Primary):</strong> <a href="mailto:n.ogroup@yahoo.com">n.ogroup@yahoo.com</a></li>
+            <li><strong>Email (Secondary):</strong> <a href="mailto:n.o_group@outlook.com">n.o_group@outlook.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+2347075536341">+234 707 553 6341</a></li>
+          </ul>
+          <p>For security-related inquiries or to report a vulnerability, please contact: <a href="mailto:n.ogroup@yahoo.com?subject=Security%20Report">security@tether.app</a></p>
+          <p>For GDPR-related inquiries or data protection requests, please contact: <a href="mailto:n.ogroup@yahoo.com?subject=Privacy%20Request">privacy@tether.app</a></p>
+          <p>We will respond to all legitimate inquiries within <strong>30 days</strong>.</p>
+
+          <!-- Acknowledgement -->
+          <div style="margin-top:48px;padding:24px;background:rgba(0,229,255,0.04);border-radius:12px;border:1px solid rgba(0,229,255,0.08);text-align:center;">
+            <p style="margin-bottom:8px;"><strong>By using Tether, you acknowledge that you have read, understood, and agree to this Privacy Policy.</strong></p>
+            <p style="font-size:13px;color:var(--color-muted);">© <span data-year>2026</span> Tether. All Rights Reserved.</p>
+          </div>
+
+          <!-- Legal Nav -->
+          <div class="legal-nav">
+            <a href="terms.html" class="btn btn-secondary">
+              <i class="fas fa-file-contract btn-icon"></i> Terms of Service
+            </a>
+            <a href="contact.html" class="btn btn-primary">
+              <i class="fas fa-paper-plane btn-icon"></i> Contact Us
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><img src="assets/logo.svg" alt="Tether" width="32" height="32"><span>Tether</span></div>
+        <p class="footer-brand-desc">Unbreakable connections. Secure, instant messaging that never lets go.</p>
+        <div class="footer-social">
+          <a href="#!" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#!" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#!" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column"><h4>Product</h4><ul><li><a href="features.html">Features</a></li><li><a href="screenshots.html">Screenshots</a></li><li><a href="index.html#download">Download</a></li><li><a href="news.html">News</a></li></ul></div>
+      <div class="footer-column"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="news.html">Blog</a></li></ul></div>
+      <div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+2347075536341"><i class="fas fa-phone" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>+234 707 553 6341</a></li><li><a href="mailto:n.ogroup@yahoo.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.ogroup@yahoo.com</a></li><li><a href="mailto:n.o_group@outlook.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.o_group@outlook.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; <span data-year>2026</span> Tether &bull; All Rights Reserved.</p>
+      <div class="footer-legal"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a></div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" style="position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:14px;background:rgba(18,26,46,0.8);border:1px solid rgba(0,229,255,0.15);backdrop-filter:blur(10px);color:var(--color-primary);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9990;opacity:0;visibility:hidden;transform:translateY(20px);transition:all 0.3s ease;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <style>.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}.back-to-top:hover{box-shadow:0 0 16px rgba(0,229,255,0.4),0 0 32px rgba(0,229,255,0.15);border-color:var(--color-primary);transform:translateY(-3px)!important}</style>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
 
 </body>
 </html>
