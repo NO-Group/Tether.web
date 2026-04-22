@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>News & Updates — Tether | Latest Announcements</title>
+  <meta name="description" content="Stay up to date with the latest Tether news, product updates, security announcements, and behind-the-scenes stories from the team.">
+  <meta name="theme-color" content="#0A0F1C">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="News & Updates — Tether">
+  <meta property="og:description" content="The latest news, updates, and announcements from the Tether team.">
+  <meta property="og:image" content="assets/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary:'#00E5FF', secondary:'#00B8D9', bg:'#0A0F1C', surface:'#121A2E', 'surface-light':'#1A2540', muted:'#94A3C3' },
+          fontFamily: { heading:['Space Grotesk','sans-serif'], body:['Inter','sans-serif'] },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .news-hero-featured {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      margin-bottom: 64px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .news-hero-featured { grid-template-columns: 1fr; }
+    }
+
+    .featured-img {
+      width: 100%;
+      height: 360px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #121A2E 0%, #1A2540 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,229,255,0.08);
+    }
+    .featured-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,255,0.04) 0%, transparent 60%);
+    }
+    .featured-img i {
+      font-size: 80px;
+      color: rgba(0,229,255,0.1);
+      z-index: 1;
+    }
+    .featured-label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, #00E5FF, #00B8D9);
+      color: #0A0F1C;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 8px;
+      z-index: 2;
+    }
+    .featured-content { display: flex; flex-direction: column; gap: 16px; }
+    .featured-date {
+      font-size: 13px; color: var(--color-primary);
+      font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .featured-title {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700; line-height: 1.3; color: var(--color-text);
+    }
+    .featured-excerpt {
+      font-size: 16px; color: var(--color-muted); line-height: 1.8;
+    }
+    .featured-meta {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: var(--color-muted);
+    }
+    .featured-author-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(0,229,255,0.12); border: 2px solid rgba(0,229,255,0.2);
+    }
+
+    .news-full-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+    }
+    @media (max-width: 480px) {
+      .news-full-grid { grid-template-columns: 1fr; }
+    }
+
+    .news-article-card {
+      background: rgba(18,26,46,0.4);
+      border: 1px solid rgba(0,229,255,0.06);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .news-article-card:hover {
+      border-color: rgba(0,229,255,0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 48px rgba(0,229,255,0.08);
+    }
+    .news-article-img {
+      width: 100%; height: 200px;
+      background: linear-gradient(135deg, #121A2E, #1A2540);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(0,229,255,0.12); font-size: 48px;
+      position: relative; overflow: hidden;
+    }
+    .news-article-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(10,15,28,0.8));
+    }
+    .news-article-body { padding: 24px; }
+    .news-article-tag {
+      display: inline-block;
+      padding: 4px 12px; border-radius: 999px;
+      background: rgba(0,229,255,0.08); color: var(--color-primary);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .news-article-date {
+      font-size: 12px; color: var(--color-muted);
+      margin-bottom: 8px;
+    }
+    .news-article-title {
+      font-family: var(--font-heading);
+      font-size: 18px; font-weight: 700; color: var(--color-text);
+      line-height: 1.4; margin-bottom: 10px;
+    }
+    .news-article-excerpt {
+      font-size: 14px; color: var(--color-muted); line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .news-article-footer {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .news-article-author {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--color-muted);
+    }
+    .news-article-author-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(0,229,255,0.1);
+    }
+    .news-read-more {
+      font-size: 13px; font-weight: 600; color: var(--color-primary);
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 0.3s ease, text-shadow 0.3s ease;
+    }
+    .news-read-more:hover { gap: 12px; text-shadow: 0 0 12px rgba(0,229,255,0.6); }
+
+    /* Article Expanded View */
+    .article-modal {
+      position: fixed; inset: 0; z-index: 99999;
+      background: rgba(10,15,28,0.95);
+      backdrop-filter: blur(30px);
+      overflow-y: auto;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .article-modal.active { opacity: 1; visibility: visible; }
+    .article-modal-inner {
+      max-width: 760px; margin: 0 auto;
+      padding: 100px 24px 60px;
+      transform: translateY(20px);
+      transition: transform 0.4s ease;
+    }
+    .article-modal.active .article-modal-inner { transform: translateY(0); }
+    .article-modal-close {
+      position: fixed; top: 24px; right: 24px;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.15);
+      color: var(--color-primary); font-size: 20px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease; z-index: 10;
+    }
+    .article-modal-close:hover {
+      background: rgba(0,229,255,0.15);
+      box-shadow: 0 0 16px rgba(0,229,255,0.3);
+      transform: rotate(90deg);
+    }
+    .article-modal-tag { margin-bottom: 16px; }
+    .article-modal-title {
+      font-family: var(--font-heading);
+      font-size: clamp(28px,4vw,42px); font-weight: 700;
+      line-height: 1.2; color: var(--color-text); margin-bottom: 16px;
+    }
+    .article-modal-meta {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      font-size: 14px; color: var(--color-muted);
+      padding-bottom: 24px; margin-bottom: 32px;
+      border-bottom: 1px solid rgba(0,229,255,0.06);
+    }
+    .article-modal-content p {
+      font-size: 16px; color: var(--color-muted); line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .article-modal-content h3 {
+      font-family: var(--font-heading);
+      font-size: 22px; font-weight: 700; color: var(--color-text);
+      margin: 36px 0 16px;
+    }
+    .article-modal-content ul {
+      padding-left: 24px; margin-bottom: 20px;
+    }
+    .article-modal-content li {
+      font-size: 16px; color: var(--color-muted);
+      line-height: 1.8; margin-bottom: 8px;
+    }
+    .article-modal-content strong { color: var(--color-text); }
+    .article-modal-content blockquote {
+      border-left: 3px solid var(--color-primary);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: rgba(0,229,255,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--color-text);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader-overlay" aria-hidden="true">
+    <img src="assets/logo.svg" alt="" class="loader-logo" width="80" height="80">
+    <div class="loader-bar-container"><div class="loader-bar"></div></div>
+    <span class="loader-text">Loading</span>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#00E5FF,#00B8D9);z-index:99999;transition:width 0.1s linear;box-shadow:0 0 8px rgba(0,229,255,0.5);"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo" aria-label="Tether Home">
+        <img src="assets/logo.svg" alt="Tether Logo" width="36" height="36">
+        <span class="nav-logo-text">Tether</span>
+      </a>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="features.html" role="menuitem">Features</a></li>
+        <li role="none"><a href="screenshots.html" role="menuitem">Screenshots</a></li>
+        <li role="none"><a href="news.html" role="menuitem" class="active">News</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About</a></li>
+        <li role="none"><a href="faq.html" role="menuitem">FAQ</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="index.html#download" class="btn btn-primary btn-sm"><i class="fas fa-download btn-icon"></i> Download</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-menu-glow"></div>
+    <a href="index.html">Home</a><a href="features.html">Features</a><a href="screenshots.html">Screenshots</a>
+    <a href="news.html">News</a><a href="about.html">About</a><a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
+    <div style="margin-top:16px;"><a href="index.html#download" class="btn btn-primary"><i class="fas fa-download"></i> Download App</a></div>
+  </div>
+
+  <!-- Main -->
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero-glow" aria-hidden="true"></div>
+      <div class="section-badge"><span class="section-badge-dot"></span> News & Updates</div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,56px);margin-top:16px;">
+        Stay in the <span class="gradient-text">Loop</span>
+      </h1>
+      <p class="section-subtitle" style="max-width:640px;margin:16px auto 0;">
+        The latest announcements, product updates, and stories from the Tether team.
+      </p>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="section" style="padding-top:20px;">
+      <div class="section-container">
+
+        <div class="news-hero-featured reveal">
+          <div class="featured-img">
+            <span class="featured-label">Featured</span>
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div class="featured-content">
+            <span class="featured-date">January 15, 2026</span>
+            <h2 class="featured-title">Tether 2.0 — The Future of Messaging Arrives</h2>
+            <p class="featured-excerpt">
+              We're thrilled to unveil Tether 2.0, our most ambitious update yet. Featuring a completely redesigned interface, AI-powered smart replies, real-time translation across 40 languages, and performance improvements that make everything feel instantaneous.
+            </p>
+            <div class="featured-meta">
+              <div class="featured-author-avatar"></div>
+              <span>By <strong style="color:var(--color-text);">Tether Team</strong></span>
+              <span>•</span>
+              <span>8 min read</span>
+            </div>
+            <a href="#!" class="btn btn-secondary" data-article="0" onclick="openArticle(0); return false;" style="width:fit-content;">
+              Read Full Article <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Chain Divider -->
+        <div class="chain-divider" aria-hidden="true">
+          <div class="chain-link-icon"></div>
+          <div class="chain-link-icon"></div>
+          <div class="chain-link-icon"></div>
+        </div>
+
+        <!-- Section Label -->
+        <div style="margin-bottom:32px;" class="reveal">
+          <h2 style="font-family:var(--font-heading);font-size:24px;font-weight:700;color:var(--color-text);">All Articles</h2>
+          <p style="font-size:14px;color:var(--color-muted);margin-top:4px;">Browse all our latest updates and stories.</p>
+        </div>
+
+        <!-- All News Grid -->
+        <div class="news-full-grid">
+
+          <!-- Article 1 -->
+          <article class="news-article-card" onclick="openArticle(0)">
+            <div class="news-article-img"><i class="fas fa-rocket"></i></div>
+            <div class="news-article-body">
+              <span class="news-article-tag">Product Update</span>
+              <div class="news-article-date"><i class="far fa-calendar" style="margin-right:6px;"></i>January 15, 2026</div>
+              <h3 class="news-article-title">Tether 2.0 — The Future of Messaging Arrives</h3>
+              <p class="news-article-excerpt">Introducing our biggest update ever with redesigned UI, AI-powered features, and blazing fast performance improvements across every platform.</p>
+              <div class="news-article-footer">
+                <div class="news-article-author"><div class="news-article-author-avatar"></div><span>Tether Team</span></div>
+                <span class="news-read-more">Read More <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="news-article-card" onclick="openArticle(1)">
+            <div class="news-article-img"><i class="fas fa-shield-halved"></i></div>
+            <div class="news-article-body">
+              <span class="news-article-tag">Security</span>
+              <div class="news-article-date"><i class="far fa-calendar" style="margin-right:6px;"></i>December 28, 2025</div>
+              <h3 class="news-article-title">Independent Security Audit Confirms Zero Vulnerabilities</h3>
+              <p class="news-article-excerpt">A leading cybersecurity firm has completed a comprehensive audit confirming Tether's industry-leading encryption and security standards.</p>
+              <div class="news-article-footer">
+                <div class="news-article-author"><div class="news-article-author-avatar"></div><span>Security Team</span></div>
+                <span class="news-read-more">Read More <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="news-article-card" onclick="openArticle(2)">
+            <div class="news-article-img"><i class="fas fa-earth-americas"></i></div>
+            <div class="news-article-body">
+              <span class="news-article-tag">Milestone</span>
+              <div class="news-article-date"><i class="far fa-calendar" style="margin-right:6px;"></i>November 10, 2025</div>
+              <h3 class="news-article-title">Tether Reaches 10 Million Users Worldwide</h3>
+              <p class="news-article-excerpt">We're celebrating a massive milestone — 10 million people across 140+ countries now trust Tether for their daily communications.</p>
+              <div class="news-article-footer">
+                <div class="news-article-author"><div class="news-article-author-avatar"></div><span>Tether Team</span></div>
+                <span class="news-read-more">Read More <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 4 -->
+          <article class="news-article-card" onclick="openArticle(3)">
+            <div class="news-article-img"><i class="fas fa-video"></i></div>
+            <div class="news-article-body">
+              <span class="news-article-tag">Feature</span>
+              <div class="news-article-date"><i class="far fa-calendar" style="margin-right:6px;"></i>October 5, 2025</div>
+              <h3 class="news-article-title">HD Group Video Calls Now Support 50 Participants</h3>
+              <p class="news-article-excerpt">We've expanded group video calls from 20 to 50 participants with enhanced noise cancellation, virtual backgrounds, and screen sharing.</p>
+              <div class="news-article-footer">
+                <div class="news-article-author"><div class="news-article-author-avatar"></div><span>Engineering</span></div>
+                <span class="news-read-more">Read More <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 5 -->
+          <article class="news-article-card" onclick="openArticle(4)">
+            <div class="news-article-img"><i class="fas fa-desktop"></i></div>
+            <div class="news-article-body">
+              <span class="news-article-tag">Platform</span>
+              <div class="news-article-date"><i class="far fa-calendar" style="margin-right:6px;"></i>September 18, 2025</div>
+              <h3 class="news-article-title">Tether Desktop App Launches for Windows, Mac & Linux</h3>
+              <p class="news-article-excerpt">Your favorite messaging app is now available on desktop with full sync, keyboard shortcuts, multi-window support, and native notifications.</p>
+              <div class="news-article-footer">
+                <div class="news-article-author"><div class="news-article-author-avatar"></div><span>Product Team</span></div>
+                <span class="news-read-more">Read More <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 6 -->
+          <article class="news-article-card" onclick="openArticle(5)">
+            <div class="news-article-img"><i class="fas fa-heart"></i></div>
+            <div class="news-article-body">
+              <span class="news-article-tag">Community</span>
+              <div class="news-article-date"><i class="far fa-calendar" style="margin-right:6px;"></i>August 22, 2025</div>
+              <h3 class="news-article-title">Introducing Tether Community Champions Program</h3>
+              <p class="news-article-excerpt">We're launching our Community Champions program — a new way for passionate users to help shape the future of Tether and earn exclusive rewards.</p>
+              <div class="news-article-footer">
+                <div class="news-article-author"><div class="news-article-author-avatar"></div><span>Community</span></div>
+                <span class="news-read-more">Read More <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- end news grid -->
+
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="section">
+      <div class="section-container">
+        <div class="glass-card reveal" style="max-width:680px;margin:0 auto;text-align:center;padding:48px 36px;">
+          <div style="width:56px;height:56px;border-radius:14px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--color-primary);font-size:24px;">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h2 style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:var(--color-text);margin-bottom:12px;">Never Miss an Update</h2>
+          <p style="font-size:15px;color:var(--color-muted);line-height:1.7;margin-bottom:28px;">Subscribe to our newsletter and get the latest Tether news, feature releases, and security updates delivered straight to your inbox.</p>
+          <form onsubmit="subscribeNewsletter(event)" style="display:flex;gap:12px;max-width:440px;margin:0 auto;">
+            <input type="email" placeholder="your@email.com" required style="flex:1;background:rgba(18,26,46,0.6);border:1px solid rgba(0,229,255,0.1);border-radius:12px;padding:14px 18px;font-family:var(--font-body);font-size:15px;color:var(--color-text);outline:none;transition:all 0.3s ease;" onfocus="this.style.borderColor='#00E5FF';this.style.boxShadow='0 0 0 3px rgba(0,229,255,0.1)'" onblur="this.style.borderColor='rgba(0,229,255,0.1)';this.style.boxShadow='none'">
+            <button type="submit" class="btn btn-primary" style="flex-shrink:0;">Subscribe</button>
+          </form>
+          <div id="newsletter-success" style="display:none;margin-top:20px;padding:12px;background:rgba(0,229,255,0.08);border-radius:10px;color:var(--color-primary);font-size:14px;font-weight:600;">
+            <i class="fas fa-check-circle" style="margin-right:6px;"></i> You're subscribed! Welcome to the Tether community.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Article Modal -->
+  <div class="article-modal" id="article-modal">
+    <button class="article-modal-close" onclick="closeArticle()" aria-label="Close article"><i class="fas fa-times"></i></button>
+    <div class="article-modal-inner" id="article-modal-inner"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><img src="assets/logo.svg" alt="Tether" width="32" height="32"><span>Tether</span></div>
+        <p class="footer-brand-desc">Unbreakable connections. Secure, instant messaging that never lets go.</p>
+        <div class="footer-social">
+          <a href="#!" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#!" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#!" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column"><h4>Product</h4><ul><li><a href="features.html">Features</a></li><li><a href="screenshots.html">Screenshots</a></li><li><a href="index.html#download">Download</a></li><li><a href="news.html">News</a></li></ul></div>
+      <div class="footer-column"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="news.html">Blog</a></li></ul></div>
+      <div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+2347075536341"><i class="fas fa-phone" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>+234 707 553 6341</a></li><li><a href="mailto:n.ogroup@yahoo.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.ogroup@yahoo.com</a></li><li><a href="mailto:n.o_group@outlook.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.o_group@outlook.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; <span data-year>2026</span> Tether &bull; All Rights Reserved.</p>
+      <div class="footer-legal"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a></div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" style="position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:14px;background:rgba(18,26,46,0.8);border:1px solid rgba(0,229,255,0.15);backdrop-filter:blur(10px);color:var(--color-primary);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9990;opacity:0;visibility:hidden;transform:translateY(20px);transition:all 0.3s ease;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <style>.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}.back-to-top:hover{box-shadow:0 0 16px rgba(0,229,255,0.4),0 0 32px rgba(0,229,255,0.15);border-color:var(--color-primary);transform:translateY(-3px)!important}</style>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+
+  <script>
+  (function(){
+    'use strict';
+
+    // =========================================
+    // Article Data
+    // =========================================
+    const articles = [
+      {
+        tag: 'Product Update',
+        date: 'January 15, 2026',
+        author: 'Tether Team',
+        readTime: '8 min read',
+        title: 'Tether 2.0 — The Future of Messaging Arrives',
+        content: `
+          <p>Today marks a monumental moment in the history of Tether. After 18 months of intensive development, countless user interviews, and over 2,000 beta tester hours, we're thrilled to introduce <strong>Tether 2.0</strong> — our most ambitious and transformative update yet.</p>
+
+          <h3>A Completely Redesigned Experience</h3>
+          <p>Every single screen in Tether has been redesigned from scratch. We've introduced a new design language we call <strong>"Fluid Dark"</strong> — featuring deeper contrast ratios, smoother animations at 120fps, and a spatial UI that adapts to your device's screen size and orientation.</p>
+          <p>The new chat interface reduces visual clutter by 40% while showing 20% more content. Message bubbles now feature contextual color coding, inline link previews, and smart grouping that clusters related messages together.</p>
+
+          <h3>AI-Powered Smart Features</h3>
+          <p>Tether 2.0 introduces our on-device AI assistant, fully encrypted and running locally on your hardware:</p>
+          <ul>
+            <li><strong>Smart Replies:</strong> Context-aware reply suggestions that learn your communication style over time — all processed on-device, never sent to any server.</li>
+            <li><strong>Real-Time Translation:</strong> Translate messages in 40+ languages instantly. Send a message in English, your friend reads it in Japanese. Seamlessly.</li>
+            <li><strong>Message Summarization:</strong> Catch up on group chats with AI-generated summaries. Missed 200 messages? Get the key points in 30 seconds.</li>
+            <li><strong>Smart Compose:</strong> Let AI help you draft messages with tone adjustment — make your message more formal, casual, friendly, or professional with one tap.</li>
+          </ul>
+
+          <blockquote>Our AI never sends your data to the cloud. Every model runs locally on your device using our custom ML framework. Your privacy remains absolute.</blockquote>
+
+          <h3>Performance That Defies Physics</h3>
+          <p>We've rewritten our message rendering engine from scratch using a custom-built framework. The results are staggering:</p>
+          <ul>
+            <li>App cold start: <strong>under 400ms</strong> (down from 1.2s)</li>
+            <li>Message send latency: <strong>under 80ms</strong> globally</li>
+            <li>Scroll performance: <strong>consistent 120fps</strong> on supported devices</li>
+            <li>Battery consumption: <strong>reduced by 35%</strong></li>
+            <li>App size: <strong>28MB</strong> (down from 42MB)</li>
+          </ul>
+
+          <h3>What's Next</h3>
+          <p>Tether 2.0 is just the beginning. Over the next quarter, we'll be rolling out additional features including collaborative documents, integrated payments, and an app ecosystem that lets third-party developers build on top of Tether's encrypted platform.</p>
+          <p>Thank you to every single user who has been part of this journey. You inspire us to push the boundaries of what messaging can be. <strong>The future is unbreakable.</strong></p>
+        `
+      },
+      {
+        tag: 'Security',
+        date: 'December 28, 2025',
+        author: 'Security Team',
+        readTime: '6 min read',
+        title: 'Independent Security Audit Confirms Zero Vulnerabilities',
+        content: `
+          <p>Security isn't a feature at Tether — it's our foundation. Today, we're proud to share the results of our latest independent security audit, conducted by <strong>CyberGuard International</strong>, one of the world's most respected cybersecurity firms.</p>
+
+          <h3>Audit Scope & Methodology</h3>
+          <p>The audit spanned 12 weeks and covered every layer of Tether's architecture:</p>
+          <ul>
+            <li>End-to-end encryption protocol (based on the Signal Protocol with custom enhancements)</li>
+            <li>Server infrastructure and API security</li>
+            <li>Client applications (Android, iOS, Desktop)</li>
+            <li>Key exchange and management systems</li>
+            <li>Network transport layer security</li>
+            <li>Authentication and session management</li>
+          </ul>
+
+          <h3>Results: Zero Critical or High-Severity Vulnerabilities</h3>
+          <p>CyberGuard's team of 8 senior security researchers found <strong>zero critical vulnerabilities</strong> and <strong>zero high-severity vulnerabilities</strong> across all tested components. Three low-severity informational findings were identified and resolved before this report was published.</p>
+
+          <blockquote>Tether demonstrates an exceptional commitment to security engineering. The encryption implementation is among the strongest we have audited in the consumer messaging space. — Dr. Sarah Mitchell, Lead Auditor, CyberGuard International</blockquote>
+
+          <h3>Our Encryption in Detail</h3>
+          <p>Tether uses a custom implementation of the Double Ratchet Algorithm combined with X3DH (Extended Triple Diffie-Hellman) key agreement. Each message is encrypted with a unique AES-256-GCM key, providing both confidentiality and integrity.</p>
+          <p>Even if a single message key were compromised, it cannot be used to decrypt any other message — past or future. This property, known as <strong>forward secrecy</strong> and <strong>future secrecy</strong>, ensures your conversations remain protected under all circumstances.</p>
+
+          <h3>Transparency Commitment</h3>
+          <p>The full audit report (with sensitive implementation details redacted) is available on our website. We are committed to conducting independent audits at least twice per year and publishing the results publicly. Transparency is trust.</p>
+        `
+      },
+      {
+        tag: 'Milestone',
+        date: 'November 10, 2025',
+        author: 'Tether Team',
+        readTime: '5 min read',
+        title: 'Tether Reaches 10 Million Users Worldwide',
+        content: `
+          <p>Today, we celebrate a landmark moment — <strong>10 million people</strong> around the world now use Tether as their primary messaging platform. From Lagos to London, Tokyo to Toronto, people are choosing privacy, speed, and beautiful design.</p>
+
+          <h3>Growth by the Numbers</h3>
+          <ul>
+            <li><strong>10,000,000+</strong> registered users</li>
+            <li><strong>140+</strong> countries represented</li>
+            <li><strong>500,000,000+</strong> messages sent per day</li>
+            <li><strong>25,000,000+</strong> voice and video calls per week</li>
+            <li><strong>4.8/5</strong> average app store rating</li>
+          </ul>
+
+          <h3>Why People Choose Tether</h3>
+          <p>In a recent survey of 50,000 users, the top reasons for choosing Tether were:</p>
+          <ul>
+            <li><strong>Privacy & Security (89%):</strong> Users trust our zero-knowledge architecture and end-to-end encryption.</li>
+            <li><strong>Speed (78%):</strong> Messages that arrive in under 100ms make a real difference in daily communication.</li>
+            <li><strong>Design (74%):</strong> Our dark-mode interface is consistently praised for its beauty and usability.</li>
+            <li><strong>No Data Collection (71%):</strong> No ads, no tracking, no phone number required.</li>
+          </ul>
+
+          <blockquote>Every user represents a person who chose to take their privacy seriously. We don't take that trust lightly.</blockquote>
+
+          <h3>What This Means for the Future</h3>
+          <p>Reaching 10 million users validates our belief that people <em>want</em> privacy-first technology when it's done right. This milestone fuels our commitment to building the best messaging platform in the world — one that never compromises on security, speed, or design.</p>
+          <p>To every one of our 10 million users: <strong>thank you</strong>. This is just the beginning.</p>
+        `
+      },
+      {
+        tag: 'Feature',
+        date: 'October 5, 2025',
+        author: 'Engineering Team',
+        readTime: '5 min read',
+        title: 'HD Group Video Calls Now Support 50 Participants',
+        content: `
+          <p>We're excited to announce a major upgrade to Tether's video calling capabilities. Starting today, group video calls now support <strong>up to 50 participants</strong> with full HD quality, up from the previous limit of 20.</p>
+
+          <h3>What's New</h3>
+          <ul>
+            <li><strong>50-person video calls:</strong> Perfect for team meetings, family gatherings, and community events.</li>
+            <li><strong>AI Noise Cancellation:</strong> Our new neural network-based noise cancellation filters out keyboard clicks, background chatter, construction noise, and more — in real-time.</li>
+            <li><strong>Virtual Backgrounds:</strong> Choose from 20+ stunning virtual backgrounds or upload your own. AI-powered edge detection makes the effect look natural even without a green screen.</li>
+            <li><strong>Screen Sharing:</strong> Share your entire screen, a specific window, or a browser tab with annotation tools for collaborative sessions.</li>
+            <li><strong>Dynamic Layouts:</strong> The call grid automatically adjusts to highlight active speakers while keeping all participants visible.</li>
+          </ul>
+
+          <h3>Technical Achievements</h3>
+          <p>Supporting 50 simultaneous video streams while maintaining end-to-end encryption is a significant engineering challenge. We developed a new <strong>Selective Forwarding Unit (SFU)</strong> architecture that routes encrypted video streams without ever decrypting them on our servers.</p>
+          <p>Adaptive bitrate streaming ensures smooth video quality even when participants have varying internet speeds. The system automatically adjusts resolution per participant based on their network conditions.</p>
+
+          <blockquote>Every video frame is encrypted end-to-end. Our servers relay encrypted data without any ability to view or record your calls. Your conversations remain private, always.</blockquote>
+        `
+      },
+      {
+        tag: 'Platform',
+        date: 'September 18, 2025',
+        author: 'Product Team',
+        readTime: '4 min read',
+        title: 'Tether Desktop App Launches for Windows, Mac & Linux',
+        content: `
+          <p>Today we're bringing the full Tether experience to your computer. The <strong>Tether Desktop App</strong> is now available for Windows 10+, macOS 12+, and major Linux distributions.</p>
+
+          <h3>Why Desktop Matters</h3>
+          <p>Many of our users spend significant portions of their day at a computer — for work, study, or creative projects. The Tether Desktop app lets you maintain your connections without constantly switching to your phone.</p>
+
+          <h3>Key Features</h3>
+          <ul>
+            <li><strong>Full Sync:</strong> Every conversation, contact, and media file syncs instantly between your phone and desktop.</li>
+            <li><strong>Keyboard Shortcuts:</strong> Navigate, search, and respond with powerful keyboard shortcuts optimized for productivity.</li>
+            <li><strong>Multi-Window Support:</strong> Open multiple conversations in separate windows for efficient multitasking.</li>
+            <li><strong>Native Notifications:</strong> System-level notifications that respect your OS notification settings and Do Not Disturb modes.</li>
+            <li><strong>Drag & Drop File Sharing:</strong> Drag any file directly into a chat to share it — up to 2GB per file.</li>
+            <li><strong>Minimal Resource Usage:</strong> Built with performance in mind, Tether Desktop uses less than 80MB of RAM during normal operation.</li>
+          </ul>
+
+          <p>The desktop app maintains the same end-to-end encryption as our mobile apps. Your messages are decrypted only on your devices — never on our servers, and never in transit.</p>
+        `
+      },
+      {
+        tag: 'Community',
+        date: 'August 22, 2025',
+        author: 'Community Team',
+        readTime: '4 min read',
+        title: 'Introducing Tether Community Champions Program',
+        content: `
+          <p>We're launching the <strong>Tether Community Champions</strong> program — a new initiative that empowers our most passionate users to help shape the future of Tether while earning exclusive rewards and recognition.</p>
+
+          <h3>What Are Community Champions?</h3>
+          <p>Community Champions are dedicated Tether users who go above and beyond to help fellow users, report issues, suggest features, and spread the word about secure messaging. They are the backbone of our community.</p>
+
+          <h3>Champion Benefits</h3>
+          <ul>
+            <li><strong>Early Access:</strong> Beta test new features weeks before public release.</li>
+            <li><strong>Direct Line:</strong> Monthly Q&A sessions with Tether's founders and engineering leads.</li>
+            <li><strong>Exclusive Badge:</strong> A special Champion badge displayed on your Tether profile.</li>
+            <li><strong>Merchandise:</strong> Annual Tether swag pack with limited-edition items.</li>
+            <li><strong>Feature Voting:</strong> Participate in our internal feature prioritization process. Your voice directly influences our roadmap.</li>
+            <li><strong>Community Events:</strong> Invitations to virtual and in-person Tether community events worldwide.</li>
+          </ul>
+
+          <h3>How to Apply</h3>
+          <p>Applications are now open to all Tether users who have been active for at least 3 months. We're looking for people who are passionate about privacy, love helping others, and want to make a difference in how the world communicates.</p>
+          <p>Visit our Community page in the app to submit your application. We review applications on a rolling basis and welcome Champions from every country and background.</p>
+
+          <blockquote>The best products are built with their communities, not just for them. Champions don't just use Tether — they help build it.</blockquote>
+        `
+      }
+    ];
+
+    // Make articles accessible globally
+    window.articles = articles;
+
+    // =========================================
+    // Article Modal
+    // =========================================
+    window.openArticle = function(index) {
+      const article = articles[index];
+      if (!article) return;
+
+      const modal = document.getElementById('article-modal');
+      const inner = document.getElementById('article-modal-inner');
+
+      inner.innerHTML = `
+        <span class="news-article-tag article-modal-tag">${article.tag}</span>
+        <h1 class="article-modal-title">${article.title}</h1>
+        <div class="article-modal-meta">
+          <div class="featured-author-avatar" style="width:36px;height:36px;"></div>
+          <span>By <strong style="color:var(--color-text);">${article.author}</strong></span>
+          <span>•</span>
+          <span>${article.date}</span>
+          <span>•</span>
+          <span>${article.readTime}</span>
+        </div>
+        <div class="article-modal-content">${article.content}</div>
+        <div style="margin-top:48px;padding-top:24px;border-top:1px solid rgba(0,229,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+          <a href="#!" onclick="closeArticle(); return false;" class="btn btn-secondary" style="width:fit-content;">
+            <i class="fas fa-arrow-left" style="margin-right:4px;"></i> Back to News
+          </a>
+          <div style="display:flex;gap:12px;">
+            <span style="font-size:13px;color:var(--color-muted);display:flex;align-items:center;">Share:</span>
+            <a href="#!" style="color:var(--color-muted);font-size:16px;transition:color 0.3s;" onmouseover="this.style.color='#00E5FF'" onmouseout="this.style.color='var(--color-muted)'" aria-label="Share on Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#!" style="color:var(--color-muted);font-size:16px;transition:color 0.3s;" onmouseover="this.style.color='#00E5FF'" onmouseout="this.style.color='var(--color-muted)'" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#!" style="color:var(--color-muted);font-size:16px;transition:color 0.3s;" onmouseover="this.style.color='#00E5FF'" onmouseout="this.style.color='var(--color-muted)'" aria-label="Copy link"><i class="fas fa-link"></i></a>
+          </div>
+        </div>
+      `;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      modal.scrollTop = 0;
+    };
+
+    window.closeArticle = function() {
+      const modal = document.getElementById('article-modal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    // Close on escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeArticle();
+    });
+
+    // Close on click outside
+    document.getElementById('article-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeArticle();
+    });
+
+    // Newsletter
+    window.subscribeNewsletter = function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const email = form.querySelector('input[type="email"]').value;
+      console.log('📬 Newsletter subscription:', email);
+
+      form.style.display = 'none';
+      document.getElementById('newsletter-success').style.display = 'block';
+
+      setTimeout(function() {
+        form.reset();
+        form.style.display = 'flex';
+        document.getElementById('newsletter-success').style.display = 'none';
+      }, 4000);
+    };
+
+  })();
+  </script>
+
+</body>
+</html>
