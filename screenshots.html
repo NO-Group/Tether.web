@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Screenshots — Tether | See the App in Action</title>
+  <meta name="description" content="Explore Tether's stunning dark-mode interface. Browse screenshots of chats, group conversations, video calls, settings, profiles, and more.">
+  <meta name="theme-color" content="#0A0F1C">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Screenshots — Tether">
+  <meta property="og:description" content="See Tether's beautiful dark-mode messaging interface in action.">
+  <meta property="og:image" content="assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00E5FF',
+            secondary: '#00B8D9',
+            bg: '#0A0F1C',
+            surface: '#121A2E',
+            'surface-light': '#1A2540',
+            muted: '#94A3C3',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-specific styles -->
+  <style>
+    .screenshots-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    @media (min-width: 768px) {
+      .screenshots-gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .screenshots-gallery {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .gallery-card {
+      background: rgba(18, 26, 46, 0.4);
+      border: 1px solid rgba(0, 229, 255, 0.06);
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .gallery-card:hover {
+      border-color: rgba(0, 229, 255, 0.25);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 229, 255, 0.1), 0 0 30px rgba(0, 229, 255, 0.05);
+    }
+
+    .gallery-card:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-card:hover .gallery-zoom-icon {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 480px;
+      background: linear-gradient(135deg, #121A2E, #1A2540);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+    }
+
+    .gallery-placeholder::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(0, 229, 255, 0.15);
+    }
+
+    .gallery-placeholder::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0, 229, 255, 0.2);
+    }
+
+    .gallery-placeholder .mock-icon {
+      font-size: 40px;
+      color: rgba(0, 229, 255, 0.15);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 15, 28, 0.6);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-zoom-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(0, 229, 255, 0.15);
+      border: 2px solid rgba(0, 229, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      font-size: 20px;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 5;
+    }
+
+    .gallery-caption {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .gallery-caption-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .gallery-caption-tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 229, 255, 0.08);
+      color: var(--color-primary);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(10, 15, 28, 0.95);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+      padding: 24px;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.15);
+      color: var(--color-primary);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(0, 229, 255, 0.15);
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.3);
+      transform: rotate(90deg);
+    }
+
+    .lightbox-content {
+      max-width: 380px;
+      width: 100%;
+      border-radius: 32px;
+      overflow: hidden;
+      background: var(--color-surface);
+      border: 1px solid rgba(0, 229, 255, 0.15);
+      box-shadow: 0 0 60px rgba(0, 229, 255, 0.1);
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-caption {
+      text-align: center;
+      margin-top: 20px;
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .lightbox-desc {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--color-muted);
+      max-width: 400px;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(18, 26, 46, 0.8);
+      border: 1px solid rgba(0, 229, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: var(--color-primary);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .lightbox-nav:hover {
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.4);
+      border-color: var(--color-primary);
+    }
+
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: var(--color-muted);
+      font-family: var(--font-heading);
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+
+    .filter-tab {
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-muted);
+      background: rgba(0, 229, 255, 0.04);
+      border: 1px solid rgba(0, 229, 255, 0.08);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-tab:hover {
+      color: var(--color-primary);
+      border-color: rgba(0, 229, 255, 0.2);
+    }
+
+    .filter-tab.active {
+      color: #0A0F1C;
+      background: linear-gradient(135deg, #00E5FF, #00B8D9);
+      border-color: transparent;
+      box-shadow: 0 4px 16px rgba(0, 229, 255, 0.3);
+    }
+
+    .gallery-card.hidden {
+      display: none;
+    }
+
+    .gallery-card.showing {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+      .lightbox-nav { width: 40px; height: 40px; font-size: 14px; }
+      .lightbox-content { max-width: 300px; }
+      .gallery-placeholder { height: 420px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader-overlay" aria-hidden="true">
+    <img src="assets/logo.svg" alt="" class="loader-logo" width="80" height="80">
+    <div class="loader-bar-container"><div class="loader-bar"></div></div>
+    <span class="loader-text">Loading</span>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#00E5FF,#00B8D9);z-index:99999;transition:width 0.1s linear;box-shadow:0 0 8px rgba(0,229,255,0.5);"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo" aria-label="Tether Home">
+        <img src="assets/logo.svg" alt="Tether Logo" width="36" height="36">
+        <span class="nav-logo-text">Tether</span>
+      </a>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="features.html" role="menuitem">Features</a></li>
+        <li role="none"><a href="screenshots.html" role="menuitem" class="active">Screenshots</a></li>
+        <li role="none"><a href="news.html" role="menuitem">News</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About</a></li>
+        <li role="none"><a href="faq.html" role="menuitem">FAQ</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="index.html#download" class="btn btn-primary btn-sm"><i class="fas fa-download btn-icon"></i> Download</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-menu-glow"></div>
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="news.html">News</a>
+    <a href="about.html">About</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <div style="margin-top:16px;">
+      <a href="index.html#download" class="btn btn-primary"><i class="fas fa-download"></i> Download App</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero-glow" aria-hidden="true"></div>
+      <div class="section-badge">
+        <span class="section-badge-dot"></span>
+        Screenshots
+      </div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,56px);margin-top:16px;">
+        Experience <span class="gradient-text">Tether</span>
+      </h1>
+      <p class="section-subtitle" style="max-width:640px;margin:16px auto 0;">
+        Take a visual tour of Tether's stunning dark-mode interface. Every screen is designed for beauty, clarity, and effortless use.
+      </p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" style="padding-top:20px;">
+      <div class="section-container">
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs reveal" role="tablist" aria-label="Screenshot categories">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-tab" data-filter="chat" role="tab" aria-selected="false">Chat</button>
+          <button class="filter-tab" data-filter="calls" role="tab" aria-selected="false">Calls</button>
+          <button class="filter-tab" data-filter="groups" role="tab" aria-selected="false">Groups</button>
+          <button class="filter-tab" data-filter="profile" role="tab" aria-selected="false">Profile</button>
+          <button class="filter-tab" data-filter="settings" role="tab" aria-selected="false">Settings</button>
+          <button class="filter-tab" data-filter="media" role="tab" aria-selected="false">Media</button>
+        </div>
+
+        <!-- Screenshots Grid -->
+        <div class="screenshots-gallery" id="gallery">
+
+          <!-- 1. Chat Conversations -->
+          <div class="gallery-card" data-category="chat" data-index="0" data-title="Private Chat" data-desc="Clean, intuitive one-on-one messaging with end-to-end encryption indicators.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-comments mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Private Chat</span>
+              <div style="display:flex;flex-direction:column;gap:8px;width:85%;margin-top:16px;">
+                <div style="display:flex;gap:8px;align-items:flex-end;">
+                  <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,229,255,0.15);flex-shrink:0;"></div>
+                  <div style="background:rgba(0,229,255,0.08);height:40px;border-radius:16px 16px 16px 4px;flex:0.7;"></div>
+                </div>
+                <div style="background:rgba(0,229,255,0.18);height:40px;border-radius:16px 16px 4px 16px;width:60%;align-self:flex-end;"></div>
+                <div style="display:flex;gap:8px;align-items:flex-end;">
+                  <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,229,255,0.15);flex-shrink:0;"></div>
+                  <div style="background:rgba(0,229,255,0.06);height:56px;border-radius:16px 16px 16px 4px;flex:0.8;"></div>
+                </div>
+                <div style="background:rgba(0,229,255,0.15);height:32px;border-radius:16px 16px 4px 16px;width:45%;align-self:flex-end;"></div>
+                <div style="display:flex;gap:8px;align-items:flex-end;">
+                  <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,229,255,0.15);flex-shrink:0;"></div>
+                  <div style="background:rgba(0,229,255,0.08);height:44px;border-radius:16px 16px 16px 4px;flex:0.65;"></div>
+                </div>
+              </div>
+              <!-- Input bar -->
+              <div style="position:absolute;bottom:16px;left:16px;right:16px;height:44px;border-radius:22px;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.08);display:flex;align-items:center;padding:0 16px;">
+                <div style="width:60%;height:8px;border-radius:4px;background:rgba(255,255,255,0.06);"></div>
+                <div style="margin-left:auto;width:28px;height:28px;border-radius:50%;background:rgba(0,229,255,0.15);"></div>
+              </div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">Private Chat</span>
+              <span class="gallery-caption-tag">Chat</span>
+            </div>
+          </div>
+
+          <!-- 2. Group Chat -->
+          <div class="gallery-card" data-category="groups" data-index="1" data-title="Group Conversation" data-desc="Vibrant group chats with member avatars, reactions, and threaded replies.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-users mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Group Chat</span>
+              <div style="display:flex;flex-direction:column;gap:6px;width:85%;margin-top:16px;">
+                <div style="display:flex;gap:6px;align-items:flex-end;">
+                  <div style="width:24px;height:24px;border-radius:50%;background:rgba(0,229,255,0.25);flex-shrink:0;"></div>
+                  <div>
+                    <div style="font-size:9px;color:rgba(0,229,255,0.4);margin-bottom:2px;padding-left:4px;">Alex</div>
+                    <div style="background:rgba(0,229,255,0.08);height:36px;border-radius:14px 14px 14px 4px;width:160px;"></div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:6px;align-items:flex-end;">
+                  <div style="width:24px;height:24px;border-radius:50%;background:rgba(0,184,217,0.25);flex-shrink:0;"></div>
+                  <div>
+                    <div style="font-size:9px;color:rgba(0,184,217,0.5);margin-bottom:2px;padding-left:4px;">Maya</div>
+                    <div style="background:rgba(0,184,217,0.06);height:44px;border-radius:14px 14px 14px 4px;width:180px;"></div>
+                  </div>
+                </div>
+                <div style="background:rgba(0,229,255,0.18);height:36px;border-radius:14px 14px 4px 14px;width:120px;align-self:flex-end;"></div>
+                <div style="display:flex;gap:6px;align-items:flex-end;">
+                  <div style="width:24px;height:24px;border-radius:50%;background:rgba(103,255,255,0.2);flex-shrink:0;"></div>
+                  <div>
+                    <div style="font-size:9px;color:rgba(103,255,255,0.4);margin-bottom:2px;padding-left:4px;">Sam</div>
+                    <div style="background:rgba(0,229,255,0.06);height:32px;border-radius:14px 14px 14px 4px;width:140px;"></div>
+                  </div>
+                </div>
+              </div>
+              <div style="position:absolute;bottom:16px;left:16px;right:16px;height:44px;border-radius:22px;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.08);"></div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">Group Chat</span>
+              <span class="gallery-caption-tag">Groups</span>
+            </div>
+          </div>
+
+          <!-- 3. Voice Call -->
+          <div class="gallery-card" data-category="calls" data-index="2" data-title="HD Voice Call" data-desc="Crystal-clear voice calls with real-time waveform visualization and noise cancellation.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-phone mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Voice Call</span>
+              <div style="margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+                <div style="width:88px;height:88px;border-radius:50%;background:rgba(0,229,255,0.1);border:3px solid rgba(0,229,255,0.25);display:flex;align-items:center;justify-content:center;">
+                  <div style="width:48px;height:48px;border-radius:50%;background:rgba(0,229,255,0.15);"></div>
+                </div>
+                <div style="width:110px;height:14px;border-radius:8px;background:rgba(255,255,255,0.1);"></div>
+                <div style="width:70px;height:10px;border-radius:8px;background:rgba(0,229,255,0.15);"></div>
+                <!-- Waveform -->
+                <div style="display:flex;gap:3px;align-items:center;margin-top:12px;">
+                  <div style="width:3px;height:12px;border-radius:2px;background:rgba(0,229,255,0.3);"></div>
+                  <div style="width:3px;height:20px;border-radius:2px;background:rgba(0,229,255,0.4);"></div>
+                  <div style="width:3px;height:28px;border-radius:2px;background:rgba(0,229,255,0.5);"></div>
+                  <div style="width:3px;height:16px;border-radius:2px;background:rgba(0,229,255,0.35);"></div>
+                  <div style="width:3px;height:32px;border-radius:2px;background:rgba(0,229,255,0.5);"></div>
+                  <div style="width:3px;height:24px;border-radius:2px;background:rgba(0,229,255,0.4);"></div>
+                  <div style="width:3px;height:14px;border-radius:2px;background:rgba(0,229,255,0.3);"></div>
+                  <div style="width:3px;height:26px;border-radius:2px;background:rgba(0,229,255,0.45);"></div>
+                  <div style="width:3px;height:18px;border-radius:2px;background:rgba(0,229,255,0.35);"></div>
+                  <div style="width:3px;height:30px;border-radius:2px;background:rgba(0,229,255,0.5);"></div>
+                  <div style="width:3px;height:12px;border-radius:2px;background:rgba(0,229,255,0.3);"></div>
+                  <div style="width:3px;height:22px;border-radius:2px;background:rgba(0,229,255,0.4);"></div>
+                </div>
+                <!-- Call buttons -->
+                <div style="display:flex;gap:20px;margin-top:24px;">
+                  <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,71,87,0.25);border:2px solid rgba(255,71,87,0.4);display:flex;align-items:center;justify-content:center;color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-phone-slash"></i></div>
+                  <div style="width:52px;height:52px;border-radius:50%;background:rgba(0,229,255,0.1);border:2px solid rgba(0,229,255,0.2);"></div>
+                  <div style="width:52px;height:52px;border-radius:50%;background:rgba(0,229,255,0.1);border:2px solid rgba(0,229,255,0.2);"></div>
+                </div>
+              </div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">Voice Call</span>
+              <span class="gallery-caption-tag">Calls</span>
+            </div>
+          </div>
+
+          <!-- 4. Video Call -->
+          <div class="gallery-card" data-category="calls" data-index="3" data-title="Group Video Call" data-desc="HD video calling with up to 50 participants, virtual backgrounds, and screen sharing.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-video mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Video Call</span>
+              <div style="margin-top:12px;width:88%;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div style="aspect-ratio:4/3;border-radius:12px;background:rgba(0,229,255,0.06);display:flex;align-items:center;justify-content:center;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,229,255,0.15);"></div>
+                </div>
+                <div style="aspect-ratio:4/3;border-radius:12px;background:rgba(0,184,217,0.05);display:flex;align-items:center;justify-content:center;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,184,217,0.15);"></div>
+                </div>
+                <div style="aspect-ratio:4/3;border-radius:12px;background:rgba(0,229,255,0.04);display:flex;align-items:center;justify-content:center;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,229,255,0.12);"></div>
+                </div>
+                <div style="aspect-ratio:4/3;border-radius:12px;background:rgba(0,184,217,0.06);display:flex;align-items:center;justify-content:center;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,184,217,0.12);"></div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;margin-top:20px;">
+                <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.15);"></div>
+                <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,71,87,0.2);border:1px solid rgba(255,71,87,0.3);"></div>
+                <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.15);"></div>
+                <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.15);"></div>
+              </div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">Video Call</span>
+              <span class="gallery-caption-tag">Calls</span>
+            </div>
+          </div>
+
+          <!-- 5. Profile -->
+          <div class="gallery-card" data-category="profile" data-index="4" data-title="User Profile" data-desc="Customizable profiles with avatars, status, bio, and shared media overview.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-user mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Profile</span>
+              <div style="margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:10px;width:85%;">
+                <div style="width:80px;height:80px;border-radius:50%;background:rgba(0,229,255,0.12);border:3px solid rgba(0,229,255,0.25);"></div>
+                <div style="width:100px;height:14px;border-radius:8px;background:rgba(255,255,255,0.1);"></div>
+                <div style="width:60px;height:8px;border-radius:8px;background:rgba(0,229,255,0.15);"></div>
+                <div style="width:160px;height:10px;border-radius:8px;background:rgba(255,255,255,0.05);margin-top:4px;"></div>
+                <div style="display:flex;gap:24px;margin-top:16px;">
+                  <div style="text-align:center;"><div style="width:40px;height:16px;border-radius:4px;background:rgba(0,229,255,0.2);margin:0 auto;"></div><div style="width:50px;height:8px;border-radius:4px;background:rgba(255,255,255,0.05);margin:6px auto 0;"></div></div>
+                  <div style="text-align:center;"><div style="width:40px;height:16px;border-radius:4px;background:rgba(0,229,255,0.2);margin:0 auto;"></div><div style="width:50px;height:8px;border-radius:4px;background:rgba(255,255,255,0.05);margin:6px auto 0;"></div></div>
+                  <div style="text-align:center;"><div style="width:40px;height:16px;border-radius:4px;background:rgba(0,229,255,0.2);margin:0 auto;"></div><div style="width:50px;height:8px;border-radius:4px;background:rgba(255,255,255,0.05);margin:6px auto 0;"></div></div>
+                </div>
+                <!-- Actions -->
+                <div style="display:flex;gap:12px;margin-top:16px;width:100%;">
+                  <div style="flex:1;height:38px;border-radius:10px;background:rgba(0,229,255,0.15);border:1px solid rgba(0,229,255,0.2);"></div>
+                  <div style="flex:1;height:38px;border-radius:10px;background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.1);"></div>
+                </div>
+              </div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">User Profile</span>
+              <span class="gallery-caption-tag">Profile</span>
+            </div>
+          </div>
+
+          <!-- 6. Settings -->
+          <div class="gallery-card" data-category="settings" data-index="5" data-title="App Settings" data-desc="Intuitive settings panel with toggle controls, organized by category.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-gear mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Settings</span>
+              <div style="display:flex;flex-direction:column;gap:8px;width:85%;margin-top:16px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(0,229,255,0.05);border-radius:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:8px;background:rgba(0,229,255,0.12);"></div><div style="width:80px;height:10px;border-radius:4px;background:rgba(255,255,255,0.08);"></div></div>
+                  <div style="width:38px;height:22px;border-radius:11px;background:rgba(0,229,255,0.3);position:relative;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(0,229,255,0.8);position:absolute;right:3px;top:3px;"></div></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(0,229,255,0.03);border-radius:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:8px;background:rgba(0,229,255,0.08);"></div><div style="width:100px;height:10px;border-radius:4px;background:rgba(255,255,255,0.06);"></div></div>
+                  <div style="width:38px;height:22px;border-radius:11px;background:rgba(255,255,255,0.08);position:relative;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.2);position:absolute;left:3px;top:3px;"></div></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(0,229,255,0.05);border-radius:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:8px;background:rgba(0,229,255,0.12);"></div><div style="width:90px;height:10px;border-radius:4px;background:rgba(255,255,255,0.08);"></div></div>
+                  <div style="width:38px;height:22px;border-radius:11px;background:rgba(0,229,255,0.3);position:relative;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(0,229,255,0.8);position:absolute;right:3px;top:3px;"></div></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(0,229,255,0.03);border-radius:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:8px;background:rgba(0,229,255,0.08);"></div><div style="width:70px;height:10px;border-radius:4px;background:rgba(255,255,255,0.06);"></div></div>
+                  <div style="color:rgba(0,229,255,0.3);font-size:14px;"><i class="fas fa-chevron-right"></i></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(0,229,255,0.05);border-radius:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:8px;background:rgba(0,229,255,0.12);"></div><div style="width:110px;height:10px;border-radius:4px;background:rgba(255,255,255,0.08);"></div></div>
+                  <div style="color:rgba(0,229,255,0.3);font-size:14px;"><i class="fas fa-chevron-right"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">Settings</span>
+              <span class="gallery-caption-tag">Settings</span>
+            </div>
+          </div>
+
+          <!-- 7. Media Gallery -->
+          <div class="gallery-card" data-category="media" data-index="6" data-title="Media Gallery" data-desc="Browse all shared photos, videos, and files in a beautiful grid layout.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-image mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Media Gallery</span>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;width:88%;margin-top:16px;">
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,229,255,0.1);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,184,217,0.07);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,229,255,0.12);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,184,217,0.05);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,229,255,0.08);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,184,217,0.09);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,229,255,0.06);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,184,217,0.1);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,229,255,0.07);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,184,217,0.06);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,229,255,0.1);"></div>
+                <div style="aspect-ratio:1;border-radius:8px;background:rgba(0,184,217,0.08);"></div>
+              </div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">Media Gallery</span>
+              <span class="gallery-caption-tag">Media</span>
+            </div>
+          </div>
+
+          <!-- 8. Encrypted Chat -->
+          <div class="gallery-card" data-category="chat" data-index="7" data-title="Encrypted Chat" data-desc="End-to-end encrypted conversations with visual security indicators and verification.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-lock mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Encrypted Chat</span>
+              <div style="display:flex;flex-direction:column;gap:8px;width:85%;margin-top:12px;">
+                <div style="text-align:center;padding:10px;background:rgba(0,229,255,0.05);border-radius:10px;margin-bottom:4px;">
+                  <div style="display:flex;align-items:center;justify-content:center;gap:6px;">
+                    <i class="fas fa-lock" style="font-size:10px;color:rgba(0,229,255,0.4);"></i>
+                    <div style="width:150px;height:6px;border-radius:4px;background:rgba(0,229,255,0.1);"></div>
+                  </div>
+                </div>
+                <div style="background:rgba(0,229,255,0.08);height:38px;border-radius:14px 14px 14px 4px;width:70%;"></div>
+                <div style="background:rgba(0,229,255,0.18);height:38px;border-radius:14px 14px 4px 14px;width:55%;align-self:flex-end;"></div>
+                <div style="background:rgba(0,229,255,0.06);height:48px;border-radius:14px 14px 14px 4px;width:65%;"></div>
+                <div style="background:rgba(0,229,255,0.15);height:32px;border-radius:14px 14px 4px 14px;width:50%;align-self:flex-end;"></div>
+                <div style="background:rgba(0,229,255,0.08);height:40px;border-radius:14px 14px 14px 4px;width:60%;"></div>
+              </div>
+              <div style="position:absolute;bottom:16px;left:16px;right:16px;height:44px;border-radius:22px;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.08);"></div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">Encrypted Chat</span>
+              <span class="gallery-caption-tag">Chat</span>
+            </div>
+          </div>
+
+          <!-- 9. Chat List -->
+          <div class="gallery-card" data-category="chat" data-index="8" data-title="Chat List" data-desc="Your conversations at a glance with unread badges, timestamps, and status indicators.">
+            <div class="gallery-placeholder">
+              <i class="fas fa-list mock-icon"></i>
+              <span style="color:var(--color-muted);font-size:13px;">Chat List</span>
+              <div style="display:flex;flex-direction:column;gap:4px;width:88%;margin-top:16px;">
+                <div style="display:flex;gap:10px;align-items:center;padding:12px 10px;background:rgba(0,229,255,0.06);border-radius:14px;">
+                  <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,229,255,0.15);flex-shrink:0;position:relative;"><div style="position:absolute;bottom:0;right:0;width:12px;height:12px;border-radius:50%;background:rgba(46,204,113,0.5);border:2px solid #121A2E;"></div></div>
+                  <div style="flex:1;"><div style="width:70%;height:10px;border-radius:4px;background:rgba(255,255,255,0.1);"></div><div style="width:90%;height:8px;margin-top:6px;border-radius:4px;background:rgba(255,255,255,0.04);"></div></div>
+                  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;"><div style="width:30px;height:6px;border-radius:4px;background:rgba(0,229,255,0.15);"></div><div style="width:20px;height:20px;border-radius:50%;background:rgba(0,229,255,0.2);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(0,229,255,0.8);">3</div></div>
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;padding:12px 10px;background:rgba(0,229,255,0.03);border-radius:14px;">
+                  <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,184,217,0.12);flex-shrink:0;"></div>
+                  <div style="flex:1;"><div style="width:55%;height:10px;border-radius:4px;background:rgba(255,255,255,0.08);"></div><div style="width:80%;height:8px;margin-top:6px;border-radius:4px;background:rgba(255,255,255,0.04);"></div></div>
+                  <div><div style="width:30px;height:6px;border-radius:4px;background:rgba(255,255,255,0.06);"></div></div>
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;padding:12px 10px;background:rgba(0,229,255,0.05);border-radius:14px;">
+                  <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,229,255,0.1);flex-shrink:0;position:relative;"><div style="position:absolute;bottom:0;right:0;width:12px;height:12px;border-radius:50%;background:rgba(46,204,113,0.5);border:2px solid #121A2E;"></div></div>
+                  <div style="flex:1;"><div style="width:65%;height:10px;border-radius:4px;background:rgba(255,255,255,0.1);"></div><div style="width:70%;height:8px;margin-top:6px;border-radius:4px;background:rgba(255,255,255,0.04);"></div></div>
+                  <div><div style="width:30px;height:6px;border-radius:4px;background:rgba(255,255,255,0.06);"></div></div>
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;padding:12px 10px;background:rgba(0,229,255,0.03);border-radius:14px;">
+                  <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,184,217,0.08);flex-shrink:0;"></div>
+                  <div style="flex:1;"><div style="width:50%;height:10px;border-radius:4px;background:rgba(255,255,255,0.08);"></div><div style="width:85%;height:8px;margin-top:6px;border-radius:4px;background:rgba(255,255,255,0.04);"></div></div>
+                  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;"><div style="width:30px;height:6px;border-radius:4px;background:rgba(0,229,255,0.15);"></div><div style="width:20px;height:20px;border-radius:50%;background:rgba(0,229,255,0.2);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(0,229,255,0.8);">1</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-zoom-icon"><i class="fas fa-expand"></i></div></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-text">Chat List</span>
+              <span class="gallery-caption-tag">Chat</span>
+            </div>
+          </div>
+
+        </div><!-- end gallery -->
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section download-section">
+      <div class="download-glow" aria-hidden="true"></div>
+      <div class="section-container" style="position:relative;z-index:2;">
+        <div class="section-header">
+          <h2 class="section-title">Like What You <span class="gradient-text">See?</span></h2>
+          <p class="section-subtitle">Download Tether and experience this beautiful interface on your own device.</p>
+        </div>
+        <div class="download-buttons">
+          <a href="index.html#download" class="download-badge"><span class="download-badge-icon"><i class="fab fa-google-play"></i></span><div class="download-badge-text"><span class="download-badge-label">GET IT ON</span><span class="download-badge-store">Google Play</span></div></a>
+          <a href="index.html#download" class="download-badge"><span class="download-badge-icon"><i class="fab fa-apple"></i></span><div class="download-badge-text"><span class="download-badge-label">DOWNLOAD ON THE</span><span class="download-badge-store">App Store</span></div></a>
+        </div>
+        <p class="coming-soon-note"><i class="fas fa-clock"></i> &nbsp;Coming Soon — Download links will be available after launch.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <button class="lightbox-close" aria-label="Close preview"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous screenshot"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" aria-label="Next screenshot"><i class="fas fa-chevron-right"></i></button>
+    <div class="lightbox-content" id="lightbox-content"></div>
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+    <div class="lightbox-desc" id="lightbox-desc"></div>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><img src="assets/logo.svg" alt="Tether" width="32" height="32"><span>Tether</span></div>
+        <p class="footer-brand-desc">Unbreakable connections. Secure, instant messaging that never lets go.</p>
+        <div class="footer-social">
+          <a href="#!" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#!" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#!" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column"><h4>Product</h4><ul><li><a href="features.html">Features</a></li><li><a href="screenshots.html">Screenshots</a></li><li><a href="index.html#download">Download</a></li><li><a href="news.html">News</a></li></ul></div>
+      <div class="footer-column"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="news.html">Blog</a></li></ul></div>
+      <div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+2347075536341"><i class="fas fa-phone" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>+234 707 553 6341</a></li><li><a href="mailto:n.ogroup@yahoo.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.ogroup@yahoo.com</a></li><li><a href="mailto:n.o_group@outlook.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.o_group@outlook.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; <span data-year>2026</span> Tether &bull; All Rights Reserved.</p>
+      <div class="footer-legal"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a></div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" style="position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:14px;background:rgba(18,26,46,0.8);border:1px solid rgba(0,229,255,0.15);backdrop-filter:blur(10px);color:var(--color-primary);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9990;opacity:0;visibility:hidden;transform:translateY(20px);transition:all 0.3s ease;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <style>.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}.back-to-top:hover{box-shadow:0 0 16px rgba(0,229,255,0.4),0 0 32px rgba(0,229,255,0.15);border-color:var(--color-primary);transform:translateY(-3px)!important}</style>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+
+  <!-- Gallery + Lightbox Logic -->
+  <script>
+  (function() {
+    'use strict';
+
+    const cards = document.querySelectorAll('.gallery-card');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightbox-content');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+
+    let currentIndex = 0;
+    let visibleCards = Array.from(cards);
+
+    // ========= FILTER =========
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.dataset.filter;
+
+        // Update active tab
+        filterTabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        // Filter cards
+        cards.forEach(card => {
+          const category = card.dataset.category;
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+            card.classList.add('showing');
+          } else {
+            card.classList.add('hidden');
+            card.classList.remove('showing');
+          }
+        });
+
+        // Update visible cards array
+        visibleCards = Array.from(cards).filter(c => !c.classList.contains('hidden'));
+      });
+    });
+
+    // ========= LIGHTBOX =========
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+      const card = visibleCards[currentIndex];
+      if (!card) return;
+
+      const placeholder = card.querySelector('.gallery-placeholder');
+      const title = card.dataset.title || '';
+      const desc = card.dataset.desc || '';
+
+      // Clone the placeholder content
+      lightboxContent.innerHTML = '';
+      const clone = placeholder.cloneNode(true);
+      clone.style.height = '520px';
+      clone.style.borderRadius = '32px';
+      lightboxContent.appendChild(clone);
+
+      lightboxCaption.textContent = title;
+      lightboxDesc.textContent = desc;
+      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + visibleCards.length;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % visibleCards.length;
+      updateLightbox();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length;
+      updateLightbox();
+    }
+
+    // Card click
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const idx = visibleCards.indexOf(card);
+        if (idx !== -1) openLightbox(idx);
+      });
+    });
+
+    // Controls
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Click outside
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Touch swipe for lightbox
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightboxContent.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightboxContent.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+    }, { passive: true });
+
+  })();
+  </script>
+
+</body>
+</html>
