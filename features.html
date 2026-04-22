@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Features — Tether | Secure Messaging Reimagined</title>
+  <meta name="description" content="Discover all the powerful features that make Tether the most secure, fast, and beautiful messaging app. End-to-end encryption, group chats, HD calls, and more.">
+  <meta name="theme-color" content="#0A0F1C">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Features — Tether">
+  <meta property="og:description" content="Explore Tether's powerful features: end-to-end encryption, instant messaging, HD calls, and more.">
+  <meta property="og:image" content="assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00E5FF',
+            secondary: '#00B8D9',
+            bg: '#0A0F1C',
+            surface: '#121A2E',
+            'surface-light': '#1A2540',
+            muted: '#94A3C3',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader-overlay" aria-hidden="true">
+    <img src="assets/logo.svg" alt="" class="loader-logo" width="80" height="80">
+    <div class="loader-bar-container"><div class="loader-bar"></div></div>
+    <span class="loader-text">Loading</span>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#00E5FF,#00B8D9);z-index:99999;transition:width 0.1s linear;box-shadow:0 0 8px rgba(0,229,255,0.5);"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo" aria-label="Tether Home">
+        <img src="assets/logo.svg" alt="Tether Logo" width="36" height="36">
+        <span class="nav-logo-text">Tether</span>
+      </a>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="features.html" role="menuitem" class="active">Features</a></li>
+        <li role="none"><a href="screenshots.html" role="menuitem">Screenshots</a></li>
+        <li role="none"><a href="news.html" role="menuitem">News</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About</a></li>
+        <li role="none"><a href="faq.html" role="menuitem">FAQ</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="index.html#download" class="btn btn-primary btn-sm"><i class="fas fa-download btn-icon"></i> Download</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-menu-glow"></div>
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="screenshots.html">Screenshots</a>
+    <a href="news.html">News</a>
+    <a href="about.html">About</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <div style="margin-top:16px;">
+      <a href="index.html#download" class="btn btn-primary"><i class="fas fa-download"></i> Download App</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero-glow" aria-hidden="true"></div>
+      <div class="section-badge">
+        <span class="section-badge-dot"></span>
+        Features
+      </div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,56px);margin-top:16px;">
+        Built for <span class="gradient-text">Unbreakable</span> Communication
+      </h1>
+      <p class="section-subtitle" style="max-width:640px;margin:16px auto 0;">
+        Every feature in Tether exists for one purpose — to give you the most secure, fast, and beautiful messaging experience possible. No compromises.
+      </p>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="section" style="padding-top:0;padding-bottom:60px;">
+      <div class="section-container">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center;" class="stagger-children">
+          <div class="glass-card" style="padding:28px 20px;">
+            <div style="font-size:36px;font-weight:700;font-family:var(--font-heading);color:var(--color-primary);" data-count="256" data-suffix="-bit">0</div>
+            <div style="font-size:14px;color:var(--color-muted);margin-top:4px;">Encryption Standard</div>
+          </div>
+          <div class="glass-card" style="padding:28px 20px;">
+            <div style="font-size:36px;font-weight:700;font-family:var(--font-heading);color:var(--color-primary);" data-count="100" data-suffix="ms" data-prefix="<">0</div>
+            <div style="font-size:14px;color:var(--color-muted);margin-top:4px;">Message Delivery</div>
+          </div>
+          <div class="glass-card" style="padding:28px 20px;">
+            <div style="font-size:36px;font-weight:700;font-family:var(--font-heading);color:var(--color-primary);" data-count="10" data-suffix="M+">0</div>
+            <div style="font-size:14px;color:var(--color-muted);margin-top:4px;">Active Users</div>
+          </div>
+          <div class="glass-card" style="padding:28px 20px;">
+            <div style="font-size:36px;font-weight:700;font-family:var(--font-heading);color:var(--color-primary);" data-count="140" data-suffix="+">0</div>
+            <div style="font-size:14px;color:var(--color-muted);margin-top:4px;">Countries Served</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================== -->
+    <!--  SECURITY & PRIVACY                         -->
+    <!-- =========================================== -->
+    <section class="section" id="security">
+      <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-badge"><span class="section-badge-dot"></span> Security & Privacy</div>
+          <h2 class="section-title">Your Privacy is <span class="gradient-text">Non-Negotiable</span></h2>
+          <p class="section-subtitle">Tether was built from scratch with a privacy-first architecture. Here's how we keep your data safe.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- E2E Encryption -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+            <h3 class="feature-title">End-to-End Encryption</h3>
+            <p class="feature-desc">Every message, voice note, image, video, and file is encrypted using the Signal Protocol with AES-256 encryption. Only you and the intended recipient can read your messages — not even Tether's servers can decrypt them. Keys are generated and stored exclusively on your device.</p>
+          </div>
+
+          <!-- Zero-Knowledge -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-eye-slash"></i></div>
+            <h3 class="feature-title">Zero-Knowledge Architecture</h3>
+            <p class="feature-desc">We cannot see your messages. We cannot read your contacts. We don't know who you're talking to. Our servers process encrypted blobs — we have zero knowledge of your data. Your metadata is protected with onion-routing-inspired relay networks.</p>
+          </div>
+
+          <!-- No Phone Number -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+            <h3 class="feature-title">No Phone Number Required</h3>
+            <p class="feature-desc">Unlike other messaging apps, Tether doesn't require your phone number to sign up. Create an anonymous Tether ID and start messaging immediately. Your real identity stays yours — we never link your account to personal identifiers.</p>
+          </div>
+
+          <!-- Disappearing Messages -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-ghost"></i></div>
+            <h3 class="feature-title">Disappearing Messages</h3>
+            <p class="feature-desc">Set any conversation to auto-delete messages after a chosen time period: 5 seconds, 30 seconds, 1 hour, 1 day, or 7 days. Once expired, messages are permanently erased from all devices with no recovery possible — giving you full control over your digital footprint.</p>
+          </div>
+
+          <!-- Screenshot Protection -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-camera-rotate"></i></div>
+            <h3 class="feature-title">Screenshot Protection</h3>
+            <p class="feature-desc">Enable screenshot protection on sensitive conversations. When active, recipients cannot capture screenshots of your messages. If they attempt to, you'll be notified immediately. Works across both Android and iOS platforms.</p>
+          </div>
+
+          <!-- Open Source -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-code"></i></div>
+            <h3 class="feature-title">Open Source Protocol</h3>
+            <p class="feature-desc">Our encryption protocol is fully open source and has been independently audited by three leading cybersecurity firms. Transparency is trust — anyone can inspect, verify, and contribute to our security infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chain Divider -->
+    <div class="chain-divider" aria-hidden="true">
+      <div class="chain-link-icon"></div>
+      <div class="chain-link-icon"></div>
+      <div class="chain-link-icon"></div>
+    </div>
+
+    <!-- =========================================== -->
+    <!--  MESSAGING                                  -->
+    <!-- =========================================== -->
+    <section class="section" id="messaging">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-badge"><span class="section-badge-dot"></span> Messaging</div>
+          <h2 class="section-title">Messaging That <span class="gradient-text">Feels Alive</span></h2>
+          <p class="section-subtitle">Rich, expressive, and lightning fast. Tether messages go beyond plain text.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Instant Tethering -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-link"></i></div>
+            <h3 class="feature-title">Instant Tethering</h3>
+            <p class="feature-desc">Our proprietary tethering protocol delivers messages in under 100 milliseconds worldwide. Built on a distributed edge network spanning 60+ global data centers, your messages arrive before you can blink — literally faster than human perception.</p>
+          </div>
+
+          <!-- Rich Media -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-photo-film"></i></div>
+            <h3 class="feature-title">Rich Media Sharing</h3>
+            <p class="feature-desc">Share photos, videos, GIFs, voice notes, documents, and files up to 2GB each. Media is compressed intelligently to preserve quality while saving bandwidth. Original quality files are always available for download from your encrypted cloud vault.</p>
+          </div>
+
+          <!-- Reactions & Stickers -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-face-smile"></i></div>
+            <h3 class="feature-title">Reactions & Stickers</h3>
+            <p class="feature-desc">Express yourself with inline emoji reactions on any message. Choose from thousands of beautifully designed sticker packs, or create your own custom stickers from your photos. Animated stickers bring conversations to life.</p>
+          </div>
+
+          <!-- Message Threads -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-comments"></i></div>
+            <h3 class="feature-title">Threaded Replies</h3>
+            <p class="feature-desc">Reply to specific messages with inline threads to keep conversations organized. Perfect for group chats where multiple topics unfold simultaneously. Threads collapse neatly so your chat never feels cluttered.</p>
+          </div>
+
+          <!-- Drafts & Scheduling -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-clock"></i></div>
+            <h3 class="feature-title">Drafts & Scheduled Messages</h3>
+            <p class="feature-desc">Compose messages and save them as drafts, or schedule them to send at a specific date and time. Perfect for birthday wishes, reminders, or communicating across time zones without disturbing anyone's sleep.</p>
+          </div>
+
+          <!-- Edit & Delete -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-pen-to-square"></i></div>
+            <h3 class="feature-title">Edit & Unsend</h3>
+            <p class="feature-desc">Made a typo? Change your mind? Edit sent messages within 48 hours or unsend them entirely. Unsent messages are permanently deleted from all recipients' devices — like they never existed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chain Divider -->
+    <div class="chain-divider" aria-hidden="true">
+      <div class="chain-link-icon"></div>
+      <div class="chain-link-icon"></div>
+      <div class="chain-link-icon"></div>
+    </div>
+
+    <!-- =========================================== -->
+    <!--  CALLS & GROUPS                             -->
+    <!-- =========================================== -->
+    <section class="section" id="calls">
+      <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-badge"><span class="section-badge-dot"></span> Calls & Groups</div>
+          <h2 class="section-title">Calls That <span class="gradient-text">Crystal Clear</span></h2>
+          <p class="section-subtitle">HD voice and video calls with enterprise-grade reliability, plus group features that scale.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- HD Voice -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-phone"></i></div>
+            <h3 class="feature-title">HD Voice Calls</h3>
+            <p class="feature-desc">Crystal-clear voice calls powered by the Opus codec at 48kHz sample rate. AI-driven noise cancellation filters out background sounds in real-time. Calls are end-to-end encrypted and work seamlessly on low-bandwidth connections.</p>
+          </div>
+
+          <!-- Video Calls -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-video"></i></div>
+            <h3 class="feature-title">HD Video Calls</h3>
+            <p class="feature-desc">Full HD 1080p video calling with up to 50 participants simultaneously. Features include virtual backgrounds, screen sharing, picture-in-picture mode, and adaptive bitrate streaming that maintains quality even on unstable connections.</p>
+          </div>
+
+          <!-- Group Chats -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <h3 class="feature-title">Groups Up to 10,000</h3>
+            <p class="feature-desc">Create vibrant communities with up to 10,000 members. Groups feature admin controls, member roles, pinned messages, polls, shared calendars, and a searchable media archive. Every group message is fully encrypted.</p>
+          </div>
+
+          <!-- Channels -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-bullhorn"></i></div>
+            <h3 class="feature-title">Broadcast Channels</h3>
+            <p class="feature-desc">Create one-to-many broadcast channels for announcements, newsletters, or content distribution. Channels support unlimited subscribers with rich formatting, scheduled posts, and detailed engagement analytics.</p>
+          </div>
+
+          <!-- Screen Sharing -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-desktop"></i></div>
+            <h3 class="feature-title">Screen Sharing</h3>
+            <p class="feature-desc">Share your screen during video calls for presentations, debugging, or just showing something cool. Supports full-screen sharing, window-specific sharing, and annotation tools for collaborative sessions.</p>
+          </div>
+
+          <!-- Polls -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+            <h3 class="feature-title">Polls & Surveys</h3>
+            <p class="feature-desc">Create interactive polls directly in any chat or group. Support for multiple choice, ranking, and open-ended questions. Results update in real-time with beautiful visualizations and anonymous voting options.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chain Divider -->
+    <div class="chain-divider" aria-hidden="true">
+      <div class="chain-link-icon"></div>
+      <div class="chain-link-icon"></div>
+      <div class="chain-link-icon"></div>
+    </div>
+
+    <!-- =========================================== -->
+    <!--  PLATFORM & CUSTOMIZATION                   -->
+    <!-- =========================================== -->
+    <section class="section" id="platform">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-badge"><span class="section-badge-dot"></span> Platform</div>
+          <h2 class="section-title">Your App, <span class="gradient-text">Your Way</span></h2>
+          <p class="section-subtitle">Tether works everywhere and adapts to your personal style.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Cross-Platform -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-rotate"></i></div>
+            <h3 class="feature-title">Cross-Platform Sync</h3>
+            <p class="feature-desc">Seamlessly switch between Android, iOS, Windows, macOS, Linux, and the web. All your conversations, media, contacts, and settings sync instantly across every device. Start a chat on your phone, continue on your laptop — zero friction.</p>
+          </div>
+
+          <!-- Custom Themes -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-palette"></i></div>
+            <h3 class="feature-title">Custom Themes</h3>
+            <p class="feature-desc">Choose from dozens of stunning pre-built themes or create your own. Customize accent colors, chat wallpapers, bubble styles, font sizes, and more. Dark mode and AMOLED black mode save battery on OLED displays.</p>
+          </div>
+
+          <!-- Cloud Storage -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+            <h3 class="feature-title">Unlimited Cloud Storage</h3>
+            <p class="feature-desc">Every photo, video, and file you share is stored in your personal encrypted cloud vault — forever. Access your entire media history from any device without consuming local storage. Completely encrypted, completely yours.</p>
+          </div>
+
+          <!-- Lightning Speed -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <h3 class="feature-title">Lightning Performance</h3>
+            <p class="feature-desc">Tether is built with a custom rendering engine optimized for messaging. The app launches in under 500ms, scrolls at 120fps, and uses 40% less battery than competing apps. We obsess over every millisecond.</p>
+          </div>
+
+          <!-- Notifications -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-bell"></i></div>
+            <h3 class="feature-title">Smart Notifications</h3>
+            <p class="feature-desc">AI-powered notification prioritization learns your patterns and surfaces what matters most. Custom notification sounds per contact, scheduled quiet hours, and granular per-chat settings give you complete control.</p>
+          </div>
+
+          <!-- Accessibility -->
+          <div class="feature-card" data-tilt="4">
+            <div class="feature-icon"><i class="fas fa-universal-access"></i></div>
+            <h3 class="feature-title">Accessibility First</h3>
+            <p class="feature-desc">Tether is designed to be usable by everyone. Full screen reader support, high contrast modes, adjustable font sizes, and keyboard navigation ensure that no one is left behind. We conform to WCAG 2.1 AA standards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================== -->
+    <!--  COMPARISON TABLE                           -->
+    <!-- =========================================== -->
+    <section class="section" id="comparison">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-badge"><span class="section-badge-dot"></span> Comparison</div>
+          <h2 class="section-title">How Tether <span class="gradient-text">Compares</span></h2>
+          <p class="section-subtitle">See how Tether stacks up against other popular messaging apps.</p>
+        </div>
+
+        <div class="reveal" style="overflow-x:auto;">
+          <table style="width:100%;min-width:640px;border-collapse:separate;border-spacing:0;background:rgba(18,26,46,0.4);border:1px solid rgba(0,229,255,0.08);border-radius:20px;overflow:hidden;">
+            <thead>
+              <tr style="background:rgba(0,229,255,0.06);">
+                <th style="padding:18px 24px;text-align:left;font-family:var(--font-heading);font-size:14px;font-weight:600;color:var(--color-muted);border-bottom:1px solid rgba(0,229,255,0.08);">Feature</th>
+                <th style="padding:18px 24px;text-align:center;font-family:var(--font-heading);font-size:14px;font-weight:700;color:var(--color-primary);border-bottom:1px solid rgba(0,229,255,0.08);">
+                  <img src="assets/logo.svg" alt="Tether" style="width:20px;height:20px;display:inline-block;vertical-align:middle;margin-right:6px;">Tether
+                </th>
+                <th style="padding:18px 24px;text-align:center;font-family:var(--font-heading);font-size:14px;font-weight:600;color:var(--color-muted);border-bottom:1px solid rgba(0,229,255,0.08);">App A</th>
+                <th style="padding:18px 24px;text-align:center;font-family:var(--font-heading);font-size:14px;font-weight:600;color:var(--color-muted);border-bottom:1px solid rgba(0,229,255,0.08);">App B</th>
+                <th style="padding:18px 24px;text-align:center;font-family:var(--font-heading);font-size:14px;font-weight:600;color:var(--color-muted);border-bottom:1px solid rgba(0,229,255,0.08);">App C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:14px 24px;font-size:14px;color:var(--color-text);border-bottom:1px solid rgba(0,229,255,0.04);">End-to-End Encryption</td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:#00E5FF;font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:var(--color-muted);font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:var(--color-muted);font-size:18px;"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td style="padding:14px 24px;font-size:14px;color:var(--color-text);border-bottom:1px solid rgba(0,229,255,0.04);">No Phone Number Required</td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:#00E5FF;font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+              </tr>
+              <tr>
+                <td style="padding:14px 24px;font-size:14px;color:var(--color-text);border-bottom:1px solid rgba(0,229,255,0.04);">Zero Data Collection</td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:#00E5FF;font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:var(--color-muted);font-size:18px;"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td style="padding:14px 24px;font-size:14px;color:var(--color-text);border-bottom:1px solid rgba(0,229,255,0.04);">Groups up to 10,000</td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:#00E5FF;font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:var(--color-muted);font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+              </tr>
+              <tr>
+                <td style="padding:14px 24px;font-size:14px;color:var(--color-text);border-bottom:1px solid rgba(0,229,255,0.04);">File Sharing (2GB)</td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:#00E5FF;font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:var(--color-muted);font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+              </tr>
+              <tr>
+                <td style="padding:14px 24px;font-size:14px;color:var(--color-text);border-bottom:1px solid rgba(0,229,255,0.04);">Open Source Protocol</td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:#00E5FF;font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:var(--color-muted);font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:var(--color-muted);font-size:18px;"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td style="padding:14px 24px;font-size:14px;color:var(--color-text);border-bottom:1px solid rgba(0,229,255,0.04);">Custom Themes</td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:#00E5FF;font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:var(--color-muted);font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+              </tr>
+              <tr>
+                <td style="padding:14px 24px;font-size:14px;color:var(--color-text);">Scheduled Messages</td>
+                <td style="padding:14px 24px;text-align:center;color:#00E5FF;font-size:18px;"><i class="fas fa-check-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+                <td style="padding:14px 24px;text-align:center;color:rgba(255,71,87,0.6);font-size:18px;"><i class="fas fa-times-circle"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================== -->
+    <!--  CTA                                        -->
+    <!-- =========================================== -->
+    <section class="section download-section">
+      <div class="download-glow" aria-hidden="true"></div>
+      <div class="section-container" style="position:relative;z-index:2;">
+        <div class="section-header">
+          <h2 class="section-title">Ready to Experience <span class="gradient-text">All This?</span></h2>
+          <p class="section-subtitle">Download Tether today and discover messaging without limits.</p>
+        </div>
+        <div class="download-buttons">
+          <a href="index.html#download" class="download-badge" aria-label="Download on Google Play">
+            <span class="download-badge-icon"><i class="fab fa-google-play"></i></span>
+            <div class="download-badge-text">
+              <span class="download-badge-label">GET IT ON</span>
+              <span class="download-badge-store">Google Play</span>
+            </div>
+          </a>
+          <a href="index.html#download" class="download-badge" aria-label="Download on App Store">
+            <span class="download-badge-icon"><i class="fab fa-apple"></i></span>
+            <div class="download-badge-text">
+              <span class="download-badge-label">DOWNLOAD ON THE</span>
+              <span class="download-badge-store">App Store</span>
+            </div>
+          </a>
+        </div>
+        <p class="coming-soon-note"><i class="fas fa-clock"></i> &nbsp;Coming Soon — Download links will be available after launch.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <img src="assets/logo.svg" alt="Tether" width="32" height="32">
+          <span>Tether</span>
+        </div>
+        <p class="footer-brand-desc">Unbreakable connections. Secure, instant messaging that never lets go.</p>
+        <div class="footer-social">
+          <a href="#!" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#!" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#!" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="screenshots.html">Screenshots</a></li>
+          <li><a href="index.html#download">Download</a></li>
+          <li><a href="news.html">News</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="news.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+2347075536341"><i class="fas fa-phone" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>+234 707 553 6341</a></li>
+          <li><a href="mailto:n.ogroup@yahoo.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.ogroup@yahoo.com</a></li>
+          <li><a href="mailto:n.o_group@outlook.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.o_group@outlook.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; <span data-year>2026</span> Tether &bull; All Rights Reserved.</p>
+      <div class="footer-legal">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" style="position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:14px;background:rgba(18,26,46,0.8);border:1px solid rgba(0,229,255,0.15);backdrop-filter:blur(10px);color:var(--color-primary);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9990;opacity:0;visibility:hidden;transform:translateY(20px);transition:all 0.3s ease;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <style>.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}.back-to-top:hover{box-shadow:0 0 16px rgba(0,229,255,0.4),0 0 32px rgba(0,229,255,0.15);border-color:var(--color-primary);transform:translateY(-3px)!important}</style>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+
+</body>
+</html>
