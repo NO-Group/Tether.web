@@ -1,52 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Terms of Service - Tether</title>
-<style>
-body { font-family:Arial; background:#0b0f1a; color:#fff; padding:40px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Terms of Service — Tether</title>
+  <meta name="description" content="Read Tether's Terms of Service. Understand your rights, responsibilities, and the rules governing your use of the Tether messaging platform.">
+  <meta name="theme-color" content="#0A0F1C">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Terms of Service — Tether">
+  <meta property="og:description" content="Terms governing your use of the Tether messaging platform.">
+  <meta property="og:image" content="assets/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary:'#00E5FF', secondary:'#00B8D9', bg:'#0A0F1C', surface:'#121A2E', 'surface-light':'#1A2540', muted:'#94A3C3' },
+          fontFamily: { heading:['Space Grotesk','sans-serif'], body:['Inter','sans-serif'] },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .legal-toc {
+      background: rgba(18,26,46,0.4);
+      border: 1px solid rgba(0,229,255,0.06);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+    .legal-toc h3 {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legal-toc h3 i {
+      color: var(--color-primary);
+      font-size: 14px;
+    }
+    .legal-toc ol {
+      list-style: none;
+      counter-reset: toc;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 600px) {
+      .legal-toc ol { grid-template-columns: 1fr; }
+    }
+    .legal-toc li {
+      counter-increment: toc;
+    }
+    .legal-toc a {
+      font-size: 14px;
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+    }
+    .legal-toc a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+      opacity: 0.5;
+      width: 24px;
+      flex-shrink: 0;
+    }
+    .legal-toc a:hover {
+      color: var(--color-primary);
+      padding-left: 4px;
+    }
+
+    .legal-nav {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 60px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(0,229,255,0.06);
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
 <body>
 
-<h1>Terms of Service</h1>
+  <!-- Loader -->
+  <div class="loader-overlay" aria-hidden="true">
+    <img src="assets/logo.svg" alt="" class="loader-logo" width="80" height="80">
+    <div class="loader-bar-container"><div class="loader-bar"></div></div>
+    <span class="loader-text">Loading</span>
+  </div>
 
-<p>Effective Date: 2026</p>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#00E5FF,#00B8D9);z-index:99999;transition:width 0.1s linear;box-shadow:0 0 8px rgba(0,229,255,0.5);"></div>
 
-<h3>Acceptance</h3>
-<p>
-By using Tether, you agree to these terms.
-</p>
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo" aria-label="Tether Home">
+        <img src="assets/logo.svg" alt="Tether Logo" width="36" height="36">
+        <span class="nav-logo-text">Tether</span>
+      </a>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="features.html" role="menuitem">Features</a></li>
+        <li role="none"><a href="screenshots.html" role="menuitem">Screenshots</a></li>
+        <li role="none"><a href="news.html" role="menuitem">News</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About</a></li>
+        <li role="none"><a href="faq.html" role="menuitem">FAQ</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="index.html#download" class="btn btn-primary btn-sm"><i class="fas fa-download btn-icon"></i> Download</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-<h3>Use of Service</h3>
-<p>
-You agree not to misuse the platform or engage in harmful or illegal activities.
-</p>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-menu-glow"></div>
+    <a href="index.html">Home</a><a href="features.html">Features</a><a href="screenshots.html">Screenshots</a>
+    <a href="news.html">News</a><a href="about.html">About</a><a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
+    <div style="margin-top:16px;"><a href="index.html#download" class="btn btn-primary"><i class="fas fa-download"></i> Download App</a></div>
+  </div>
 
-<h3>Accounts</h3>
-<p>
-You are responsible for maintaining the security of your account.
-</p>
+  <!-- Main -->
+  <main id="main-content">
 
-<h3>Payments</h3>
-<p>
-Certain features may require payment. All payments are processed securely via third-party providers.
-</p>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero-glow" aria-hidden="true"></div>
+      <div class="section-badge"><span class="section-badge-dot"></span> Legal</div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,56px);margin-top:16px;">
+        Terms of <span class="gradient-text">Service</span>
+      </h1>
+      <p class="section-subtitle" style="max-width:640px;margin:16px auto 0;">
+        Please read these terms carefully before using Tether. By accessing or using our platform, you agree to be bound by these terms.
+      </p>
+    </section>
 
-<h3>Termination</h3>
-<p>
-We reserve the right to suspend or terminate accounts that violate our policies.
-</p>
+    <!-- Terms Content -->
+    <section class="section" style="padding-top:20px;">
+      <div class="section-container">
+        <div class="legal-content reveal">
 
-<h3>Changes</h3>
-<p>
-We may update these terms at any time.
-</p>
+          <p class="legal-updated">
+            <i class="fas fa-calendar" style="margin-right:6px;color:var(--color-primary);"></i>
+            Last Updated: January 1, 2026 &nbsp;|&nbsp; Effective Date: January 1, 2026
+          </p>
 
-<h3>Contact</h3>
-<p>Email: n.o_group@outlook.com</p>
+          <!-- Table of Contents -->
+          <div class="legal-toc">
+            <h3><i class="fas fa-list"></i> Table of Contents</h3>
+            <ol>
+              <li><a href="#tos-1">Acceptance of Terms</a></li>
+              <li><a href="#tos-2">Eligibility</a></li>
+              <li><a href="#tos-3">Account Registration</a></li>
+              <li><a href="#tos-4">Use of the Service</a></li>
+              <li><a href="#tos-5">Prohibited Conduct</a></li>
+              <li><a href="#tos-6">Content & Intellectual Property</a></li>
+              <li><a href="#tos-7">Privacy & Data Protection</a></li>
+              <li><a href="#tos-8">End-to-End Encryption</a></li>
+              <li><a href="#tos-9">Third-Party Services</a></li>
+              <li><a href="#tos-10">Termination</a></li>
+              <li><a href="#tos-11">Disclaimers & Warranties</a></li>
+              <li><a href="#tos-12">Limitation of Liability</a></li>
+              <li><a href="#tos-13">Indemnification</a></li>
+              <li><a href="#tos-14">Dispute Resolution</a></li>
+              <li><a href="#tos-15">Modifications to Terms</a></li>
+              <li><a href="#tos-16">Contact Information</a></li>
+            </ol>
+          </div>
 
-<a href="index.html">← Back to Home</a>
+          <!-- Section 1 -->
+          <h2 id="tos-1">1. Acceptance of Terms</h2>
+          <p>These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and Tether ("Tether," "we," "us," or "our") governing your access to and use of the Tether messaging application, website, and all related services (collectively, the "Service").</p>
+          <p>By creating an account, downloading the application, or otherwise accessing or using the Service, you acknowledge that you have read, understood, and agree to be bound by these Terms and our <a href="privacy.html">Privacy Policy</a>, which is incorporated herein by reference.</p>
+          <p>If you do not agree to these Terms, you must not access or use the Service. Your continued use of the Service following any modifications to these Terms constitutes acceptance of those modifications.</p>
+
+          <!-- Section 2 -->
+          <h2 id="tos-2">2. Eligibility</h2>
+          <p>To use the Service, you must:</p>
+          <ul>
+            <li>Be at least <strong>13 years of age</strong> (or the minimum age required by the laws of your jurisdiction, whichever is greater).</li>
+            <li>If you are between 13 and 18 years of age (or the age of legal majority in your jurisdiction), you must have the consent of a parent or legal guardian to use the Service.</li>
+            <li>Have the legal capacity to enter into a binding agreement.</li>
+            <li>Not be a person barred from using the Service under the laws of your jurisdiction.</li>
+            <li>Not have been previously suspended or removed from the Service for violation of these Terms.</li>
+          </ul>
+          <p>By using the Service, you represent and warrant that you meet all of the foregoing eligibility requirements. If you are using the Service on behalf of an organization, you represent and warrant that you are authorized to bind that organization to these Terms.</p>
+
+          <!-- Section 3 -->
+          <h2 id="tos-3">3. Account Registration</h2>
+          <h3>3.1 Account Creation</h3>
+          <p>To access certain features of the Service, you must create an account by selecting a unique Tether ID and creating a password. You are not required to provide your real name, phone number, email address, or any other personally identifiable information to create an account.</p>
+          <h3>3.2 Account Security</h3>
+          <p>You are solely responsible for maintaining the confidentiality and security of your account credentials. You agree to:</p>
+          <ul>
+            <li>Create a strong, unique password that you do not use for any other service.</li>
+            <li>Not share your account credentials with any third party.</li>
+            <li>Immediately notify Tether if you become aware of any unauthorized access to or use of your account.</li>
+            <li>Accept full responsibility for all activities that occur under your account.</li>
+          </ul>
+          <h3>3.3 Account Recovery</h3>
+          <p>Due to our zero-knowledge architecture, Tether cannot access, reset, or recover your password or encryption keys. If you lose your password, you may permanently lose access to your account and all associated data. We strongly recommend storing your recovery phrase in a secure location.</p>
+
+          <!-- Section 4 -->
+          <h2 id="tos-4">4. Use of the Service</h2>
+          <h3>4.1 License Grant</h3>
+          <p>Subject to your compliance with these Terms, Tether grants you a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to download, install, and use the Service on devices that you own or control, solely for your personal, non-commercial purposes.</p>
+          <h3>4.2 Service Availability</h3>
+          <p>While we strive to provide uninterrupted access to the Service, we do not guarantee that the Service will be available at all times. The Service may be subject to scheduled maintenance, unplanned outages, or force majeure events. We reserve the right to modify, suspend, or discontinue any part of the Service at any time, with or without notice.</p>
+          <h3>4.3 Updates</h3>
+          <p>Tether may release updates, patches, or new versions of the Service from time to time. Some updates may be applied automatically, while others may require manual installation. You agree that Tether may automatically update the Service on your devices, and that these Terms will apply to all such updates unless a separate license accompanies the update.</p>
+
+          <!-- Section 5 -->
+          <h2 id="tos-5">5. Prohibited Conduct</h2>
+          <p>You agree not to use the Service to:</p>
+          <ul>
+            <li>Violate any applicable local, state, national, or international law or regulation.</li>
+            <li>Send, distribute, or store material that is unlawful, harmful, threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, or otherwise objectionable.</li>
+            <li>Distribute or facilitate the distribution of child sexual abuse material (CSAM) or any content that exploits, harms, or endangers minors.</li>
+            <li>Engage in or promote terrorism, violence, or incitement to violence against individuals or groups.</li>
+            <li>Impersonate any person or entity, or falsely state or misrepresent your affiliation with a person or entity.</li>
+            <li>Send unsolicited commercial messages (spam), bulk messaging, or automated messaging without the consent of recipients.</li>
+            <li>Attempt to gain unauthorized access to the Service, other user accounts, or any computer systems or networks connected to the Service.</li>
+            <li>Introduce viruses, malware, worms, trojan horses, or other malicious code into the Service.</li>
+            <li>Reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code of the Service, except to the extent explicitly permitted by applicable law.</li>
+            <li>Use the Service to infringe upon the intellectual property rights of any third party.</li>
+            <li>Interfere with or disrupt the integrity or performance of the Service or the data contained therein.</li>
+            <li>Collect or harvest any information from the Service, including user data, without authorization.</li>
+          </ul>
+          <p>Tether reserves the right to investigate and take appropriate action against anyone who, in Tether's sole discretion, violates this section, including without limitation, reporting the offender to law enforcement authorities and suspending or terminating the offender's account.</p>
+
+          <!-- Section 6 -->
+          <h2 id="tos-6">6. Content & Intellectual Property</h2>
+          <h3>6.1 Your Content</h3>
+          <p>You retain all rights in and to the content you create, share, or transmit through the Service ("User Content"). Due to our end-to-end encryption, Tether does not access, view, or possess your User Content at any time. You are solely responsible for your User Content and the consequences of sharing it.</p>
+          <h3>6.2 Tether's Intellectual Property</h3>
+          <p>The Service, including but not limited to the Tether application, website, logo, brand name, design elements, user interface, source code, algorithms, and all associated intellectual property rights, are and shall remain the exclusive property of Tether and its licensors.</p>
+          <p>The Tether name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of Tether. You may not use such marks without the prior written permission of Tether. All other names, logos, product and service names, designs, and slogans on the Service are the trademarks of their respective owners.</p>
+          <h3>6.3 Feedback</h3>
+          <p>If you provide Tether with any feedback, suggestions, or ideas regarding the Service ("Feedback"), you grant Tether a non-exclusive, worldwide, royalty-free, irrevocable, perpetual license to use, reproduce, modify, and distribute such Feedback for any purpose without obligation or compensation to you.</p>
+
+          <!-- Section 7 -->
+          <h2 id="tos-7">7. Privacy & Data Protection</h2>
+          <p>Your privacy is fundamentally important to us. Our collection, use, and protection of your information is governed by our <a href="privacy.html">Privacy Policy</a>, which is incorporated into and forms part of these Terms.</p>
+          <p>Key privacy principles:</p>
+          <ul>
+            <li>We operate on a <strong>zero-knowledge architecture</strong> — we cannot access, read, or decrypt your messages.</li>
+            <li>We do not collect or store your real name, phone number, email address, contacts, or location.</li>
+            <li>We do not sell, rent, or share your data with third parties for advertising or marketing purposes.</li>
+            <li>We do not display advertisements or engage in behavioral tracking.</li>
+          </ul>
+
+          <!-- Section 8 -->
+          <h2 id="tos-8">8. End-to-End Encryption</h2>
+          <p>Tether provides end-to-end encryption for all messages, voice calls, video calls, and file transfers. This means:</p>
+          <ul>
+            <li>Only you and the intended recipient(s) can read message content or access shared media.</li>
+            <li>Tether's servers process and relay only encrypted data that cannot be decrypted by Tether or any third party.</li>
+            <li>Encryption keys are generated and stored exclusively on your device(s).</li>
+            <li>Tether cannot comply with requests to provide message content, as we do not possess the technical ability to decrypt it.</li>
+          </ul>
+          <p>You acknowledge and agree that:</p>
+          <ul>
+            <li>The security of your encrypted communications depends on the security of your device(s) and account credentials.</li>
+            <li>If you lose your device or encryption keys, encrypted messages cannot be recovered by Tether.</li>
+            <li>End-to-end encryption protects content in transit and at rest, but does not prevent a recipient from voluntarily sharing received content.</li>
+          </ul>
+
+          <!-- Section 9 -->
+          <h2 id="tos-9">9. Third-Party Services</h2>
+          <p>The Service may contain links to or integrations with third-party websites, applications, or services that are not owned or controlled by Tether. Tether has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services.</p>
+          <p>You acknowledge and agree that Tether shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any content, goods, or services available on or through any third-party websites or services.</p>
+
+          <!-- Section 10 -->
+          <h2 id="tos-10">10. Termination</h2>
+          <h3>10.1 Termination by You</h3>
+          <p>You may terminate your account at any time by navigating to Settings → Account → Delete Account within the application. Upon deletion:</p>
+          <ul>
+            <li>Your Tether ID will be permanently released and cannot be reclaimed.</li>
+            <li>All your data on Tether's servers will be permanently erased within 24 hours.</li>
+            <li>Your encryption keys will be destroyed.</li>
+            <li>This action is <strong>irreversible</strong>.</li>
+          </ul>
+          <h3>10.2 Termination by Tether</h3>
+          <p>Tether reserves the right to suspend or terminate your account and access to the Service, with or without notice, for any reason, including but not limited to:</p>
+          <ul>
+            <li>Violation of these Terms or any applicable laws.</li>
+            <li>Conduct that Tether determines, in its sole discretion, to be harmful to other users, third parties, or the Service.</li>
+            <li>Extended periods of inactivity (accounts inactive for more than 12 months may be subject to deletion after notice).</li>
+          </ul>
+          <h3>10.3 Effect of Termination</h3>
+          <p>Upon termination, your right to use the Service will immediately cease. Sections of these Terms that by their nature should survive termination shall survive, including but not limited to intellectual property provisions, disclaimers, limitations of liability, and indemnification.</p>
+
+          <!-- Section 11 -->
+          <h2 id="tos-11">11. Disclaimers & Warranties</h2>
+          <p><strong>THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE.</strong> TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, TETHER DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO:</p>
+          <ul>
+            <li>IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</li>
+            <li>WARRANTIES THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.</li>
+            <li>WARRANTIES REGARDING THE ACCURACY, RELIABILITY, OR COMPLETENESS OF ANY CONTENT OR INFORMATION PROVIDED THROUGH THE SERVICE.</li>
+          </ul>
+          <p>Some jurisdictions do not allow the exclusion of certain warranties. In such jurisdictions, the above exclusions may not apply to you, and you may have additional rights.</p>
+
+          <!-- Section 12 -->
+          <h2 id="tos-12">12. Limitation of Liability</h2>
+          <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL TETHER, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, LICENSORS, OR SERVICE PROVIDERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</strong></p>
+          <ul>
+            <li>Loss of profits, revenue, data, or business opportunities.</li>
+            <li>Loss of goodwill or reputation.</li>
+            <li>Cost of procurement of substitute services.</li>
+            <li>Any damages arising from your use of or inability to use the Service.</li>
+            <li>Any damages arising from unauthorized access to or alteration of your transmissions or data.</li>
+          </ul>
+          <p><strong>IN NO EVENT SHALL TETHER'S TOTAL AGGREGATE LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATED TO THE SERVICE EXCEED THE AMOUNT YOU HAVE PAID TO TETHER IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO THE CLAIM, OR FIFTY US DOLLARS (USD $50.00), WHICHEVER IS GREATER.</strong></p>
+          <p>The limitations of liability set forth above are fundamental elements of the basis of the agreement between Tether and you.</p>
+
+          <!-- Section 13 -->
+          <h2 id="tos-13">13. Indemnification</h2>
+          <p>You agree to defend, indemnify, and hold harmless Tether, its officers, directors, employees, agents, licensors, and service providers from and against any and all claims, damages, obligations, losses, liabilities, costs, or expenses (including reasonable attorneys' fees) arising from or related to:</p>
+          <ul>
+            <li>Your use of the Service.</li>
+            <li>Your violation of these Terms.</li>
+            <li>Your violation of any rights of any third party.</li>
+            <li>Your User Content.</li>
+            <li>Any claim that your User Content caused damage to a third party.</li>
+          </ul>
+          <p>This defense and indemnification obligation will survive the termination of these Terms and your use of the Service.</p>
+
+          <!-- Section 14 -->
+          <h2 id="tos-14">14. Dispute Resolution</h2>
+          <h3>14.1 Informal Resolution</h3>
+          <p>Before initiating any formal legal proceedings, you agree to first attempt to resolve any dispute, claim, or controversy arising out of or relating to these Terms or the Service ("Dispute") informally by contacting Tether at <a href="mailto:n.ogroup@yahoo.com">n.ogroup@yahoo.com</a>. We will attempt to resolve the Dispute within thirty (30) days of receipt of your notice.</p>
+          <h3>14.2 Governing Law</h3>
+          <p>These Terms shall be governed by and construed in accordance with the laws of the Federal Republic of Nigeria, without regard to its conflict of law principles.</p>
+          <h3>14.3 Arbitration</h3>
+          <p>If the Dispute cannot be resolved informally, you agree that any Dispute shall be finally resolved by binding arbitration administered in accordance with the rules of the Lagos Court of Arbitration. The arbitration shall be conducted in English, and the arbitrator's decision shall be final and binding.</p>
+          <h3>14.4 Class Action Waiver</h3>
+          <p>YOU AND TETHER AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS, COLLECTIVE, OR REPRESENTATIVE PROCEEDING.</p>
+
+          <!-- Section 15 -->
+          <h2 id="tos-15">15. Modifications to Terms</h2>
+          <p>Tether reserves the right to modify these Terms at any time. If we make material changes, we will provide notice through the Service or by other means reasonably calculated to inform you, such as a prominent notice within the application.</p>
+          <p>Your continued use of the Service after the effective date of any modifications constitutes your acceptance of the modified Terms. If you do not agree to the modified Terms, you must stop using the Service and delete your account.</p>
+          <p>We will maintain a record of previous versions of these Terms. You may request access to any previous version by contacting us.</p>
+
+          <!-- Section 16 -->
+          <h2 id="tos-16">16. Contact Information</h2>
+          <p>If you have any questions, concerns, or requests regarding these Terms of Service, please contact us:</p>
+          <ul>
+            <li><strong>Email:</strong> <a href="mailto:n.ogroup@yahoo.com">n.ogroup@yahoo.com</a></li>
+            <li><strong>Email:</strong> <a href="mailto:n.o_group@outlook.com">n.o_group@outlook.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+2347075536341">+234 707 553 6341</a></li>
+          </ul>
+          <p>For security-related inquiries, please contact: <a href="mailto:n.ogroup@yahoo.com?subject=Security">security@tether.app</a></p>
+
+          <!-- Separator -->
+          <div style="margin-top:48px;padding:24px;background:rgba(0,229,255,0.04);border-radius:12px;border:1px solid rgba(0,229,255,0.08);text-align:center;">
+            <p style="margin-bottom:8px;"><strong>By using Tether, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</strong></p>
+            <p style="font-size:13px;color:var(--color-muted);">© <span data-year>2026</span> Tether. All Rights Reserved.</p>
+          </div>
+
+          <!-- Legal Nav -->
+          <div class="legal-nav">
+            <a href="privacy.html" class="btn btn-secondary">
+              <i class="fas fa-shield-halved btn-icon"></i> Privacy Policy
+            </a>
+            <a href="contact.html" class="btn btn-primary">
+              <i class="fas fa-paper-plane btn-icon"></i> Contact Us
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><img src="assets/logo.svg" alt="Tether" width="32" height="32"><span>Tether</span></div>
+        <p class="footer-brand-desc">Unbreakable connections. Secure, instant messaging that never lets go.</p>
+        <div class="footer-social">
+          <a href="#!" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#!" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#!" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column"><h4>Product</h4><ul><li><a href="features.html">Features</a></li><li><a href="screenshots.html">Screenshots</a></li><li><a href="index.html#download">Download</a></li><li><a href="news.html">News</a></li></ul></div>
+      <div class="footer-column"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li><li><a href="news.html">Blog</a></li></ul></div>
+      <div class="footer-column"><h4>Contact</h4><ul><li><a href="tel:+2347075536341"><i class="fas fa-phone" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>+234 707 553 6341</a></li><li><a href="mailto:n.ogroup@yahoo.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.ogroup@yahoo.com</a></li><li><a href="mailto:n.o_group@outlook.com"><i class="fas fa-envelope" style="margin-right:6px;color:var(--color-primary);font-size:12px;"></i>n.o_group@outlook.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; <span data-year>2026</span> Tether &bull; All Rights Reserved.</p>
+      <div class="footer-legal"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a></div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" style="position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:14px;background:rgba(18,26,46,0.8);border:1px solid rgba(0,229,255,0.15);backdrop-filter:blur(10px);color:var(--color-primary);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9990;opacity:0;visibility:hidden;transform:translateY(20px);transition:all 0.3s ease;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <style>.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}.back-to-top:hover{box-shadow:0 0 16px rgba(0,229,255,0.4),0 0 32px rgba(0,229,255,0.15);border-color:var(--color-primary);transform:translateY(-3px)!important}</style>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
 
 </body>
 </html>
