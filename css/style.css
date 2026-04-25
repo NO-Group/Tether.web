@@ -2173,4 +2173,25 @@ h1, h2, h3, h4, h5, h6 {
     animation: none;
     filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.4));
   }
+  /* ============================================= */
+/*  FIX: Legal content always visible            */
+/*  Only affects terms.html & privacy.html       */
+/*  All other animations remain untouched        */
+/* ============================================= */
+.legal-content {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  }
+
+.legal-content.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  }
+
+.legal-content.revealed {
+  opacity: 1 !important;
+  transform: none !important;
+  }
 }
