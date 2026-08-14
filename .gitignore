@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build output (committed? No — GitHub Pages builds from dist via CI)
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Capacitor native projects are generated locally (optional to commit)
+# android/
+# ios/
+
+# Editor / OS
+.DS_Store
+*.log
+.vscode/
+.idea/
