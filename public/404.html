@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flow</title>
+    <script>
+      // GitHub Pages SPA fallback: rewrite unknown paths to /flow/index.html
+      // so client-side routing (e.g. /flow/user.name.no.flw) works on refresh.
+      (function () {
+        var segments = location.pathname.split('/');
+        var flowIndex = segments.indexOf('flow');
+        var rest = flowIndex >= 0 ? segments.slice(flowIndex + 1) : [];
+        var qs = location.search ? location.search : '';
+        var hash = location.hash ? location.hash : '';
+        if (rest.length) {
+          location.replace(
+            location.origin +
+              '/flow/' +
+              'index.html' +
+              '?p=' +
+              encodeURIComponent(rest.join('/')) +
+              qs +
+              hash
+          );
+        } else {
+          location.replace(location.origin + '/flow/index.html' + qs + hash);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to Flow…</p>
+  </body>
+</html>

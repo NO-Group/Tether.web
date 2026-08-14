@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Flow logo">
+  <defs>
+    <linearGradient id="fgrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B3D91"/>
+      <stop offset="55%" stop-color="#0A2540"/>
+      <stop offset="100%" stop-color="#0B3D91"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#fgrad)"/>
+  <!-- three flowing current strokes, implying continuous motion -->
+  <g fill="none" stroke="#EAF2FF" stroke-width="5" stroke-linecap="round">
+    <path d="M14 38 C22 30 26 46 34 38 S46 30 50 34" opacity="0.55"/>
+    <path d="M16 46 C24 38 28 54 36 46 S48 38 52 42" opacity="0.4"/>
+    <path d="M12 30 C20 22 24 38 32 30 S44 22 48 26" opacity="0.7"/>
+  </g>
+  <circle cx="50" cy="26" r="3" fill="#5BD1FF"/>
+</svg>

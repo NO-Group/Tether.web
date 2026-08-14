@@ -1,0 +1,162 @@
+/* ==========================================================================
+   FLOW — base, reset, design tokens
+   "Things in the app must imply the name": fluid motion, streams, currents.
+   ========================================================================== */
+
+:root {
+  /* Brand — a very deep blue is the primary. Navy is only a 0.1 trace. */
+  --deep-blue: #0b3d91;
+  --deep-blue-2: #0f4cc0;
+  --deep-blue-soft: #e7eefb;
+  --navy: #000080;
+  --navy-trace: rgba(0, 0, 128, 0.1); /* 0.1 trace of navy */
+  --sky: #5bd1ff;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-full: 999px;
+
+  --font: 'Nova Round', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 28px;
+
+  --speed: 0.24s;
+  --ease: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Light theme (device-driven via prefers-color-scheme) */
+:root {
+  color-scheme: light dark;
+  --bg: #f7f9fc;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #eef2f9;
+  --text: #0a1526;
+  --text-2: #5b6b80;
+  --text-3: #8a97a8;
+  --border: rgba(11, 61, 145, 0.14);
+  --accent: var(--deep-blue);
+  --accent-2: var(--deep-blue-2);
+  --accent-contrast: #ffffff;
+  --accent-soft: var(--deep-blue-soft);
+  --shadow: 0 10px 40px -18px rgba(11, 61, 145, 0.35);
+  --hairline: 1px solid var(--border);
+}
+
+/* Dark theme — true black base, deep blue glow */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --bg-elevated: #070b12;
+    --bg-subtle: #0d1420;
+    --text: #eaf1fb;
+    --text-2: #9fb0c6;
+    --text-3: #6b7c93;
+    --border: rgba(91, 209, 255, 0.16);
+    --accent: var(--deep-blue-2);
+    --accent-2: var(--sky);
+    --accent-contrast: #ffffff;
+    --accent-soft: rgba(11, 61, 145, 0.28);
+    --shadow: 0 16px 50px -20px rgba(0, 0, 0, 0.8);
+    --hairline: 1px solid var(--border);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: anywhere;
+}
+
+/* A faint flowing gradient wash that implies motion (currents) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 60% at 50% 0%, var(--navy-trace), transparent 60%),
+    radial-gradient(80% 50% at 90% 110%, var(--navy-trace), transparent 60%),
+    radial-gradient(70% 40% at 0% 100%, var(--navy-trace), transparent 55%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  color: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Flowing scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--navy-trace), var(--navy-trace), rgba(91, 209, 255, 0.25));
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+/* Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
