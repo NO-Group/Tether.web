@@ -11,7 +11,7 @@ Capacitor and you have an iOS + Android app.
 Every user gets a handle in the form **`@username.no.flw`** and a shareable profile URL like:
 
 ```
-https://no-group.github.io/flow/username.no.flw
+https://no-group.github.io/Flow.web/username.no.flw
 ```
 
 > **Why "Flow"?** Everything implies the name — the feed is *the stream*, interactions *flow*,
@@ -26,7 +26,7 @@ https://no-group.github.io/flow/username.no.flw
 | Frontend      | React 18 + Vite (SPA), Google **Nova Round** font |
 | Backend       | **Supabase** — Postgres, Auth, Storage, Realtime, RLS |
 | Media         | Supabase Storage (image/video/audio/docs) |
-| Hosting       | GitHub Pages (`/flow/` subpath)         |
+| Hosting       | GitHub Pages (`/Flow.web/` subpath)         |
 | Mobile app    | **Capacitor** (optional wrapper)        |
 
 **Cost while you grow:** $0/month on the Supabase free tier (500 MB DB, 1 GB storage, 50k monthly
@@ -84,7 +84,7 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:5173/flow/** — you're flowing.
+Open **http://localhost:5173/Flow.web/** — you're flowing.
 
 ---
 
@@ -93,8 +93,8 @@ Open **http://localhost:5173/flow/** — you're flowing.
 1. Push this repo to GitHub (e.g. `NO-Group/flow`).
 2. Repo **Settings → Pages → Source: GitHub Actions**. The included workflow
    (`.github/workflows/deploy.yml`) builds and publishes automatically on push.
-3. Your app is live at **`https://<org>.github.io/flow/`** and profiles at
-   **`https://<org>.github.io/flow/username.no.flw`**.
+3. Your app is live at **`https://<org>.github.io/Flow.web/`** and profiles at
+   **`https://<org>.github.io/Flow.web/username.no.flw`**.
 
 > If you host under a different subpath, change `base` in `vite.config.js` and `basename` logic
 > in `src/App.jsx` accordingly.

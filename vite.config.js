@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Flow is served from GitHub Pages under https://no-group.github.io/flow/
-// so the base path is "/flow/". Change `base` if you host elsewhere.
+// Flow is served from GitHub Pages under https://no-group.github.io/Flow.web/
+// so the base path is "/Flow.web/". Change `base` (or set VITE_BASE) if you
+// host elsewhere.
 export default defineConfig({
   plugins: [react()],
-  base: '/flow/',
+  base: process.env.VITE_BASE || '/Flow.web/',
   build: {
     outDir: 'dist',
     sourcemap: false,

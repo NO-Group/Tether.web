@@ -15,7 +15,7 @@ import PostPage from './pages/PostPage.jsx';
 import Settings from './pages/Settings.jsx';
 import SetupNeeded from './pages/SetupNeeded.jsx';
 
-// GitHub Pages rewrites unknown deep links to /flow/index.html?p=<path>.
+// GitHub Pages rewrites unknown deep links to index.html?p=<path>.
 // Restore the intended route once at startup.
 function RouteRestore() {
   const nav = useNavigate();
@@ -59,8 +59,9 @@ function Shell() {
 }
 
 function Inner() {
-  // Works both on GitHub Pages (/flow/...) and local dev (any base).
-  const basename = window.location.pathname.startsWith('/flow') ? '/flow' : '';
+  // Derive the router basename from Vite's base so it works on GitHub Pages
+  // (/Flow.web/...) and anywhere else without code changes.
+  const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
   return (
     <BrowserRouter basename={basename}>
       <RouteRestore />
